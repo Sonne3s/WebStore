@@ -1,0 +1,21 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@model CheckOutDeliveryDataViewModel
+
+<div class="delivery-input-block">
+    <label for="Address" class="input-label">Адрес доставки</label>
+    <div class="input-container">
+        <input type="text" id="Address" name="Delivery.Address" value="@Model.Address">
+    </div>
+</div>
+<div class="delivery-input-block">
+    <label for="DateAndTime" class="input-label">Дата и время</label>
+    <div class="input-container">
+        <input type="text" id="DateAndTime" name="Delivery.DateAndTime" value="@Model.DateAndTime">
+        <small class="hint">Укажите удобные Вам дату и время доставки. В случае необходимости менеджер согласует с вами необходимые коррективы.</small>
+    </div>
+</div>
+<div class="delivery-input-block">
+    <div class="area-container">
+        <textarea id="Other" name="Delivery.Other" placeholder="Оставьте свои пожелания к заказу и мы постараемся Вас не разочаровать">@Model.Other</textarea>
+    </div>
+</div>

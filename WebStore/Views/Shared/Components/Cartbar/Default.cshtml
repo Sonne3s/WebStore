@@ -1,0 +1,25 @@
+﻿@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+@model int
+@{
+    var reloadQuantityGoodsInCartUrl = Url.Action("QuantityGoodsInCart", "Buying");
+    var reloadQuantityGoodsInCartAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Update = DataAttributes.InsertAttributeSelector(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCart)
+    };
+    var reloadQuantityGoodsInCartPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCartReloadLink);
+    var quantityGoodsInCartPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCart);
+}
+
+<nav class="page-cartbar">
+    <a href="@reloadQuantityGoodsInCartUrl" @Html.Raw(reloadQuantityGoodsInCartAjaxAttributes) @Html.Raw(reloadQuantityGoodsInCartPurpose) class="d-none"></a>
+    <button class="cartbar-button" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+        <i class="icon"></i>
+        <span class="quantity-goods-in-cart" @Html.Raw(quantityGoodsInCartPurpose)>
+            @Model
+        </span>
+    </button>
+</nav>

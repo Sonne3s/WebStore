@@ -1,0 +1,17 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Models.Enumerations
+@model ProductListFilterItemViewModel
+
+<div class="filter-item">
+    <label class="filter-item-header">Стоимость товара</label>
+    <div class="filter-item-body decimal">
+        <div class="filter-input-group">
+            <input type="number" placeholder="от @Model.Values.FirstOrDefault()" class="filter-input-group-number" name="MinPrice" step=".01">
+            <span class="filter-input-group-text">@Model.UnitName</span>
+        </div>
+        <div class="filter-input-group">
+            <input type="number" placeholder="до @Model.Values.LastOrDefault()" class="filter-input-group-number" name="MinPrice" step=".01">
+            <span class="filter-input-group-text">@Model.UnitName</span>
+        </div>
+    </div>
+</div>

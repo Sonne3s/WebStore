@@ -1,0 +1,8 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Models.Enumerations
+@model List<SelectListItem>
+
+<div class="filter-item">
+    <label class="filter-item-header">Тип товара</label>
+    <select asp-items=Model name=Type></select>
+</div>

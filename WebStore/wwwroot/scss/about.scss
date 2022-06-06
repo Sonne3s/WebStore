@@ -1,0 +1,254 @@
+﻿@import 'customer/_layout.scss';
+
+.about-page {
+    .about-section {
+        .about-header {
+        }
+
+        .about-sub-header {
+        }
+
+        .navigation-section {
+            display: flex;
+
+            .navigation-bar {
+                @extend .navbar;
+                @extend .navbar-light;
+                @extend .bg-light;
+                @extend .flex-column;
+                @extend .align-items-stretch;
+                @extend .p-3;
+                display: inline-block;
+                background-color: white !important;
+
+                .navigation-items {
+                    @extend .nav;
+                    @extend .nav-pills;
+                    @extend .flex-column;
+
+                    .navigation-item {
+                        @extend .nav-link;
+                        color: $color-second;
+                        border-radius: 0;
+                        opacity: 0.8;
+                        text-align: center;
+
+                        &:not(:first-child) {
+                            border-top: solid 1px #bfa568;
+                        }
+
+                        &:hover {
+                            color: $color-second;
+                            opacity: 1;
+                        }
+
+                        &:last-child {
+                            @include logo-large-emblem();
+                            font-size: 5vmax !important;
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+            .other-information {
+                display: inline-block;
+            }
+        }
+    }
+
+    .address-section {
+        .map-section {
+            display: flex;
+            justify-content: center;
+
+            .map-container {
+                .navigation-tab-header {
+                    @extend .nav;
+                    @extend .nav-tabs;
+
+                    @mixin item() {
+                        @extend .nav-item;
+
+                        .link {
+                            @extend .nav-link;
+                            margin-bottom: -2px !important;
+                            border-bottom: none;
+
+                            &.active {
+                                background-color: white !important;
+                            }
+                        }
+                    }
+
+                    .yandex-map {
+                        @include item();
+                    }
+
+                    .google-map {
+                        @include item();
+                    }
+                }
+
+                .navigation-tab-body {
+                    @extend .tab-content;
+                    border-radius: 2%;
+                    border-top-left-radius: 0;
+                    border: solid 1px #dee2e6;
+                    padding: 1em;
+
+                    @mixin item() {
+                        @extend .tab-pane;
+                        @extend .fade;
+                    }
+
+                    .yandex-map-container {
+                        @include item();
+                    }
+
+                    .google-map-container {
+                        @include item();
+                    }
+                }
+            }
+        }
+    }
+
+    .contacts-section {
+        .contacts-container {
+            display: flex;
+            justify-content: space-evenly;
+
+            .contacts-block {
+                width: 60vmax;
+
+                .phone-numbers {
+
+                    .phone-number {
+                        list-style-type: none;
+                        display: flex;
+
+                        &:nth-child(1) {
+                            justify-content: start;
+
+                            .link-icon, .copy-icon {
+                                vertical-align: 25%
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            justify-content: end;
+
+                            .link-icon, .copy-icon {
+                                vertical-align: 50%
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            justify-content: center;
+                        }
+
+                        .segment-link {
+                            border: solid gray 1px;
+                            padding: 2px;
+                            margin: 2px;
+                            border-radius: 50%;
+
+                            &.link-icon {
+                                @extend .bi;
+                                @extend .bi-telephone;
+                                font-size: 2vw;
+                                padding: 0.5vw 1vw;
+                                margin: 1vw 0;
+                                color: seagreen;
+                                background-color: lightgreen;
+                                border: solid 0.1vw seagreen;
+                                box-shadow: 0 0 20px grey;
+                                transition: 100ms;
+
+                                &:hover {
+                                    background-color: greenyellow;
+                                    box-shadow: 0 0 40px yellow;
+                                }
+
+                                &::before {
+                                    vertical-align: 0;
+                                }
+                            }
+
+                            &.copy-icon {
+                                @extend .bi;
+                                @extend .bi-files;
+                                font-size: 2vw;
+                                padding: 0vw 1vw;
+                                margin: 1vw 0;
+                                color: darkblue;
+                                background-color: lightsteelblue;
+                                border: solid 0.1vw darkblue;
+                                box-shadow: 0 0 20px grey;
+
+                                &:hover {
+                                    background-color: powderblue;
+                                    box-shadow: 0 0 40px lightblue;
+                                }
+
+                                &::before {
+                                    vertical-align: 0;
+                                }
+                            }
+                        }
+
+                        .segment-number {
+                            display: inline-block;
+                            width: 50%;
+
+                            .number {
+                                display: inline-block;
+                                width: 100%;
+                                font-size: 2vw;
+                                text-align: center;
+                                color: $color-first;
+                            }
+
+                            .description {
+                                display: inline-block;
+                                width: 100%;
+                                font-size: 1vw;
+                                text-align: center;
+                                color: lightslategray;
+                            }
+                        }
+                    }
+                }
+
+                .emails {
+                    .email {
+                        list-style-type: none;
+                        font-size: 2vw;
+                        display: flex;
+                        color: $color-second;
+
+                        &:nth-child(2) {
+                            justify-content: end;
+                        }
+                    }
+                }
+            }
+
+            .image-block {
+                img {
+                    object-fit: contain;
+                    width: 20vmax;
+                    height: 25vmax;
+                }
+            }
+        }
+    }
+
+    hr {
+        border: 0;
+        height: 4px;
+        margin: 30px 0;
+        background-image: linear-gradient(to right, #BFE2FF 50%, #337AB7 50%, #337AB7 60%, #ff9100 60%, #ff9100 70%, #05b5e6 70%, #05b5e6 80%, #b448b8 80%, #b448b8 90%, #BFE2FF 90%, #BFE2FF 100%);
+    }
+}

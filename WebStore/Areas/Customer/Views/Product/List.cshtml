@@ -1,0 +1,36 @@
+﻿@using WebStore.Areas.Customer.ViewModels
+@model ProductListViewModel;
+@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Каталог товаров", Url.Action("List", "Product", new { Area = "Customer" }), false),
+        ValueTuple.Create("Кондиционеры", Url.Action("List", "Product", new { Area = "Customer" }), true)
+    };
+}
+
+<div class="customer-product-list">
+    <div class="base-containers">
+        <div class="filters-container">
+            <partial name="List\Filter" model=Model.Filter />
+        </div>
+        <div class="products-container" id="products-container">
+            <partial name="List\Products" model=@(Model.Products, Model.Pages) />
+        </div>
+    </div>
+</div>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Constants {
+    <partial name="Constants" />
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer/product/list.min.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/js/Customer/Product/list.js" asp-append-version="true"></script>
+}

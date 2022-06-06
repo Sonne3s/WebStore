@@ -1,0 +1,56 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@model TypeSelectionViewModel
+@{
+    var addPropertyEditPropertyDisabled = (!Model.PropertyGroups.Any(t => t.Selected == true) ? "disabled" : string.Empty);
+    var modalDataProperties = string.Join(" ",
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Toggle, "modal"),
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Target, "#Modal"));
+    var addPropertyDataUrls = $"data-partial={@Url.Action("CreateProperty", new { ComponentId = Model.ComponentIndex })}";
+    var creationPageCreateUrl = Url.Action("CreationPageCreate", "ProductProperty");
+    var creationPageEditUrl = Url.Action("CreationPageEdit", "ProductProperty");
+    var creationPageAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Get,
+        Mode = Ajax.Unobtrusive.ModeValue.Replace, 
+        Update = "#Modal .modal-content", 
+        Success = "AddCreationPageSuccess"
+    };
+    var linkDataIdAttribute = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Id, Model.ComponentIndex.ToString());
+    var typeSelectionPurpose = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.TypeSelection);
+    var formAjaxAttributes = new Ajax.Unobtrusive() 
+    { 
+        Mode = Ajax.Unobtrusive.ModeValue.Replace, 
+        Update = String.Join(" ", linkDataIdAttribute, typeSelectionPurpose), 
+        Success = $"CreateButtonSuccess({ Model.ComponentIndex })"
+    };
+    var returnButtonAjaxAttributes = new Ajax.Unobtrusive() 
+    { 
+        Mode = Ajax.Unobtrusive.ModeValue.Replace, 
+        Update = String.Join(" ", linkDataIdAttribute, typeSelectionPurpose), 
+        Success = " "
+    };
+}
+
+<div class="card my-2" id="add-property-card">
+    <div class="container my-2">
+        <!form action="@Url.Action("AddButton")" @Html.Raw(@formAjaxAttributes)>
+            <div class="input-group">
+                <select asp-items="Model.PropertyGroups" name="GroupId" class="form-select" required></select>
+                <input type="hidden" name="ComponentIndex" value="@Model.ComponentIndex"/>
+                <input type="hidden" name="PropertyIndex" value="@Model.PropertyIndex"/>
+                <button type="submit" data-action="success" class="btn btn-outline-success" >
+                    <i class="bi bi-check-lg"></i>
+                </button>
+                <button type="submit" formaction="@creationPageCreateUrl" formnovalidate class="btn btn-outline-info" @Html.Raw(creationPageAjaxAttributes) @Html.Raw(modalDataProperties)>
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+                <button type="submit" formaction="@creationPageEditUrl" formnovalidate class="btn btn-outline-info" @Html.Raw(creationPageAjaxAttributes) @Html.Raw(modalDataProperties)>
+                    <i class="bi bi-pencil-square"></i>
+                </button>
+                <button type="submit" formaction="@Url.Action("AddButton")" formnovalidate @Html.Raw(returnButtonAjaxAttributes) class="btn btn-outline-danger">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </!form>
+    </div>
+</div>

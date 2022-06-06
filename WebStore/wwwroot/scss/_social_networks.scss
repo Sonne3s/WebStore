@@ -1,0 +1,224 @@
+﻿.social-networks {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'social_networks' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.social-icon-yandex-maps-alternate {
+    .path1 {
+        &:before {
+            content: "\e90d";
+            color: rgb(224, 0, 0);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1em;
+            content: "\e90e";
+            color: rgb(255, 51, 51);
+        }
+    }
+
+    .path3 {
+        &:before {
+            margin-left: -1em;
+            content: "\e90f";
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+.social-icon-yandex-maps {
+    .path1 {
+        &:before {
+            content: "\e910";
+            color: rgb(255, 68, 51);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1.5em;
+            content: "\e911";
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+.social-icon-google-maps {
+    .path1 {
+        &:before {
+            content: "\e912";
+            color: rgb(26, 115, 232);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1.5em;
+            content: "\e913";
+            color: rgb(234, 67, 53);
+        }
+    }
+
+    .path3 {
+        &:before {
+            margin-left: -1.5em;
+            content: "\e914";
+            color: rgb(66, 133, 244);
+        }
+    }
+
+    .path4 {
+        &:before {
+            margin-left: -1.5em;
+            content: "\e915";
+            color: rgb(251, 188, 4);
+        }
+    }
+
+    .path5 {
+        &:before {
+            margin-left: -1.5em;
+            content: "\e916";
+            color: rgb(52, 168, 83);
+        }
+    }
+}
+
+.social-icon-youtube {
+    .path1 {
+        &:before {
+            content: "\e900";
+            color: rgb(255, 0, 0);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1em;
+            content: "\e901";
+            color: rgb(241, 241, 241);
+        }
+    }
+}
+
+.social-icon-whatsapp {
+    .path1 {
+        &:before {
+            content: "\e902";
+            color: rgb(241, 241, 241);
+        }
+    }
+
+    .path2 {
+        margin-left: -1em;
+
+        &:before {
+            content: "\e903";
+            color: rgb(102, 224, 102);
+        }
+    }
+
+    .path3 {
+        margin-left: -1em;
+
+        &:before {
+            content: "\e904";
+            color: rgb(241, 241, 241);
+        }
+    }
+}
+
+.social-icon-viber {
+    &:before {
+        content: "\e905";
+        color: #603a88;
+    }
+}
+
+.social-icon-twitter {
+    &:before {
+        content: "\e906";
+        color: #00aced;
+    }
+}
+
+.social-icon-twitch {
+    &:before {
+        content: "\e907";
+        color: #520094;
+    }
+}
+
+.social-icon-telegram {
+    &:before {
+        content: "\e908";
+        color: #1b92d1;
+    }
+}
+
+.social-icon-skype {
+    &:before {
+        content: "\e909";
+        color: #00aced;
+    }
+}
+
+.social-icon-instagram {
+    &:before {
+        content: "\e90a";
+        color: #dd2a7b;
+    }
+}
+
+.social-icon-facebook {
+    .path1 {
+        &:before {
+            content: "\e90b";
+            color: rgb(24, 119, 242);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1em;
+            content: "\e90c";
+            color: rgb(241, 241, 241);
+        }
+    }
+}
+
+.social-icon-vkontakte {
+    .path1 {
+        &:before {
+            content: "\e917";
+            color: rgb(81, 129, 184);
+        }
+    }
+
+    .path2 {
+        &:before {
+            margin-left: -1em;
+            content: "\e918";
+            color: rgb(81, 129, 184);
+        }
+    }
+
+    .path3 {
+        &:before {
+            margin-left: -1em;
+            content: "\e919";
+            color: rgb(255, 255, 255);
+        }
+    }
+} 

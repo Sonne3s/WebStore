@@ -1,0 +1,20 @@
+﻿@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+
+<script>
+    var Account = {
+        },
+        Navbar: {
+            QuantityGoodsInCart: {
+                Purpose: "@(Html.Raw(DataAttributes.InsertAttributeSelector(
+                    DataAttributes.AttributeName.Purpose, 
+                    Customer.DataPurposes.NavbarQuantityGoodsInCartReloadLink)))"
+            }
+        },
+        CartOffCanvas: {
+            Purpose: "@(Html.Raw(DataAttributes.InsertAttributeSelector(
+                DataAttributes.AttributeName.Purpose, 
+                Customer.DataPurposes.CartOffCanvasReloadLink)))"
+        }
+    }
+</script>

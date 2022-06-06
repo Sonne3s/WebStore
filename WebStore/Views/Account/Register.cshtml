@@ -1,0 +1,62 @@
+﻿@using WebStore.ViewModels
+@model AccountRegisterViewModel
+
+<ul class="nav nav-tabs check-out" id="myTab" role="tablist">
+    <li class="nav-item check-out" role="presentation">
+        <button class="nav-link active" id="receiving-tab" data-bs-toggle="tab" data-bs-target="#receiving" type="button" role="tab" aria-controls="receiving" aria-selected="true">Основное</button>
+    </li>
+    <li class="nav-item check-out" role="presentation">
+        <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">Личные данные</button>
+    </li>
+</ul>
+<form asp-action="Register" asp-controller="Account" class="needs-validation">
+    <div class="tab-content border-top rounded-bottom border-info row" id="myTabContent">
+        <div class="tab-pane my-3 fade col-8 offset-2 active show" id="receiving" role="tabpanel" aria-labelledby="payment-tab">
+            <div class="form-group mb-3">
+                <label for="emailInput">Адрес эл.почты</label>
+                <input type="email" id="email" name="email" class="form-control" value="@Model.Email" placeholder="email@example.com">
+            </div>
+            <div class="form-group mb-3">
+                <label for="passwordInput">Пароль</label>
+                <input type="password" id="password" name="password" class="form-control" value="@Model.Password" placeholder="Пароль">
+            </div>
+            <div class="form-group mb-3">
+                <label for="passwordInput">Подтверждение пароля</label>
+                <input type="password" id="passwordconfirmation" name="passwordconfirmation" class="form-control" placeholder="Пароль">
+            </div>
+        </div>
+        <div class="tab-pane my-3 fade col-8 offset-2" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+            <div class="form-group mb-3">
+                <label for="last-name">Фамилия</label>
+                <input type="text" id="lastname" name="lastname" class="form-control" value="@Model.LastName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="firstname">Имя</label>
+                <input type="text" id="firstname" name="firstname" class="form-control" value="@Model.FirstName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="middlename">Отчество</label>
+                <input type="text" id="middlename" name="middlename" class="form-control" value="@Model.MiddleName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="phone">Номер телефона</label>
+                <input type="tel" id="phone" name="phone" class="form-control" value="@Model.Phone" pattern="(^(7|8|0)?(\d{3})(\d{3})(\d{4})$)|(\+7\(\d{3}\) \d{3}-\d{4})" placeholder="например: 9998887766" title="ожидаемый формат ввода номера: +79998887766 или 9998887766 или 89998887766 или +7(999) 888-7766">
+            </div>
+            <div class="form-group mb-3">
+                <label for="company">Компания</label>
+                <input type="text" id="company" name="company" class="form-control" value="@Model.Company">
+            </div>
+            <div class="form-group mb-3 dropup">
+                <label for="middlename">Адрес</label>
+                <input type="text" id="address" name="address" placeholder="начните вводить адрес, чтобы система начала поиск корректного адреса" class="form-control dropdown-toggle" value="@Model.MiddleName" data-action="dadata" data-bs-toggle="dropdown" data-bs-auto-close="true">
+                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                    <li class="dropdown-item d-none sample"></li>
+                </ul>
+            </div>
+        </div>
+        <button type="submit" class="btn bg-camel text-white d-grid gap-2 col-6 mx-auto">Зарегистрировать</button>
+    </div>
+</form>
+
+<script src="~/js/DaData.js" asp-append-version="true"></script>
+<script src="~/js/PhoneFormatConverter.js" asp-append-version="true"></script>

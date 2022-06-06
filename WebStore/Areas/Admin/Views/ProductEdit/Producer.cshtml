@@ -1,0 +1,24 @@
+﻿@model List<SelectListItem>
+@{
+    var modalAttributes = string.Join(" ",
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Toggle, "modal"),
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Target, "#Modal"));
+    var url = @Url.Action("CreateOrUpdateProducerModal", "ProductEdit");
+    var ajaxAttributes = new Ajax.Unobtrusive
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Post,
+        Mode = Ajax.Unobtrusive.ModeValue.Replace,
+        Update = "#Modal .modal-content"
+    };
+}
+
+<label for="ProducerId">Производитель</label>
+<div class="input-group">
+    <select asp-items="Model" name="ProducerId" id="ProducerId" class="form-select" form="@Constants.Admin.Edit.FormId" required></select>
+    <a href="@url" type="button" class="btn btn-outline-info" @Html.Raw(ajaxAttributes) @Html.Raw(modalAttributes)>
+        <i class="bi bi-plus-lg"></i>
+    </a>
+    <button type="submit" form="@Constants.Admin.Edit.FormId" formaction="@url" class="btn btn-outline-info" @Html.Raw(ajaxAttributes) @Html.Raw(modalAttributes) novalidate>
+        <i class="bi bi-pencil-square"></i>
+    </button>
+</div>

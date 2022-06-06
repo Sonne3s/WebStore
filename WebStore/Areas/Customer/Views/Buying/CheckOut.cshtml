@@ -1,0 +1,40 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@using WebStore.ViewModels
+@model CheckOutViewModel
+@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Оформление заказа", Url.Action("CheckOut", "Buying", new { Area = "Customer" }), false),
+    };
+}
+
+<div class="check-out">
+    <form asp-action="CheckOut" asp-controller="Buying" class="check-out-form">
+        <ul class="check-out-tab-head nav" id="myTab" role="tablist">
+            <li class="check-out-tab-item" role="presentation">
+                <button class="tab-item-button active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">Оформление заказа</button>
+            </li>
+            <li class="check-out-tab-item" role="presentation">
+                <button class="tab-item-button" id="receiving-tab" data-bs-toggle="tab" data-bs-target="#receiving" type="button" role="tab">Доставка и способ платы</button>
+            </li>
+        </ul>
+        <div class="check-out-tab-body" id="myTabContent">
+            <div class="check-out-tab-item fade active show" id="profile" role="tabpanel">
+                <partial name="CheckOut/PersonalData", model=Model.PersonalData />
+            </div>
+            <div class="check-out-tab-item fade" id="receiving" role="tabpanel">
+                <partial name="CheckOut/ReceivingData", model=@(Model.Installation, Model.Delivery)/>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/js/CheckOutTab.js" asp-append-version="true"></script>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer/buying/check-out.css" asp-append-version="true" />
+}

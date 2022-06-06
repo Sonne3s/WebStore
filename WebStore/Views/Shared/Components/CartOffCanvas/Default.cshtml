@@ -1,0 +1,47 @@
+﻿@using WebStore.Extensions
+@using WebStore.HtmlHelpers
+@using WebStore.ViewComponentModels
+@using Customer = WebStore.HtmlHelpers.Customer
+@model CartOffCanvasViewComponentModel
+@{
+    var reloadCartOffCanvasUrl = Url.Action("CartOffCanvas", "Buying", new { Area = "Customer" }); 
+    var reloadCartOffCanvasAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Update = DataAttributes.InsertAttributeSelector(
+            DataAttributes.AttributeName.Purpose, Customer.DataPurposes.CartOffCanvas)
+    };
+    var clearCartUrl = Url.Action("ClearCart", "Buying", new { Area = "Customer" });
+    var action = this.TempData["action"]?.ToString() ?? @Url.ActionContext.RouteData.Values["action"]?.ToString();
+    var clearCartAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Update = DataAttributes.InsertAttributeSelector(
+            DataAttributes.AttributeName.Purpose, Customer.DataPurposes.CartOffCanvas),
+        Success = action != "CartDetails" ? "ClearCartSuccess" : "location.reload()"
+    };
+    var reloadCartOffCanvasPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.CartOffCanvasReloadLink);
+}
+<a href="@reloadCartOffCanvasUrl" @Html.Raw(reloadCartOffCanvasAjaxAttributes) @Html.Raw(reloadCartOffCanvasPurpose) class="d-none"></a>
+<div class="cart-header">
+    <div class="buttons">
+        <a asp-action="CartDetails" asp-controller="Buying" asp-area="Customer" class="cart-details-button" data-bs-toggle="popover" title="Развернуть">
+            <i class="icon"></i>
+        </a>
+        <a asp-action="CheckOut" asp-controller="Buying" class="check-out-button" data-bs-toggle="popover" title="Перейти к оформлению">
+            <i class="icon"></i>
+        </a>
+        <a href="@clearCartUrl" @Html.Raw(clearCartAjaxAttributes) class="clear-cart-button" data-bs-toggle="popover" title="Очистить корзину">
+            <i class="icon"></i>
+        </a>
+    </div>
+    <h5 class="header-title">
+        @(Model.Total.ToMoney())
+        <span class="quantity-goods-in-cart">
+            @(Model.Count)
+        </span>
+    </h5>
+    <button type="button" class="hide-button"></button>
+</div>
+<div class="cart-body">
+    <vc:cart-list />
+</div>

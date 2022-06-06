@@ -1,0 +1,129 @@
+﻿@import '../../customer/_layout.scss';
+
+.registration-tab-header {
+    @extend .nav;
+    @extend .nav-tabs;
+    margin-left: 15%;
+
+    .tab-item {
+        @extend .nav-item;
+        position: relative;
+        bottom: -1px;
+
+        .tab-button {
+            @extend .nav-link;
+
+            &.active {
+                border-color: var(--bs-info);
+                border-bottom-color: white;
+            }
+        }
+    }
+}
+.registration-tab-body {
+    @extend .tab-content;
+    @extend .border-top;
+    @extend .rounded-bottom;
+    @extend .border-info;
+    @extend .row;
+
+    .tab-item {
+        @extend .tab-pane;
+        @extend .my-3;
+        @extend .fade;
+        @extend .col-8;
+        @extend .offset-2;
+
+        .input-container {
+            @extend .mb-3;
+
+            .input-label {
+                display: inline-block;
+            }
+
+            .input {
+                display: block;
+                width: 100%;
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #212529;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                appearance: none;
+                border-radius: 0.25rem;
+                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            }
+        }
+
+        .email-container {
+            @extend .input-container;
+        }
+
+        .password-container {
+            @extend .input-container;
+        }
+
+        .password-confirmation-container {
+            @extend .input-container;
+        }
+
+        .last-name-container {
+            @extend .input-container;
+        }
+
+        .first-name-container {
+            @extend .input-container;
+        }
+
+        .middle-name-container {
+            @extend .input-container;
+        }
+
+        .phone-container {
+            @extend .input-container;
+        }
+
+        .company-container {
+            @extend .input-container;
+        }
+
+        .address-container {
+            @extend .input-container;
+            @extend .dropup;
+
+            .input {
+                @extend .dropdown-toggle;
+            }
+
+            .input-dropdown {
+                @extend .dropdown-menu;
+
+                .input-dropdown-item {
+                    @extend .dropdown-item;
+                    @extend .d-none;
+                }
+            }
+        }
+    }
+
+    .authorization-tab {
+        @extend .tab-item;
+    }
+
+    .account-tab {
+        @extend .tab-item;
+    }
+
+    .submit-button {
+        @extend .btn;
+        //@extend .bg-camel;
+        @extend .text-white;
+        @extend .d-grid;
+        @extend .gap-2;
+        @extend .col-6;
+        @extend .mx-auto;
+    }
+}

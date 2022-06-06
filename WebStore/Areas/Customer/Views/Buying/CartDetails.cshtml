@@ -1,0 +1,48 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@using WebStore.Extensions
+@model CartDetailsViewModel
+@{
+    var checkOutLink = Url.Action("CheckOut", "Buying", new { Area = "Customer" });
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Корзина", Url.Action("CartDetails", "Buying", new { Area = "Customer" }), false),
+    };
+}
+<div class="cart">
+    <div class="cart-items-section">
+        <div class="cart-items">
+            @foreach (var item in Model.Items)
+            {
+                <partial name="CartDetailsItem", model=item />
+            }
+        </div>
+    </div>
+    <div class="cart-buying-section">
+        @if(Model.TotalCount > 0)
+        {
+            <a href="@checkOutLink" class="check-out-button">Приступить к оформлению покупки</a>
+        }
+        <div class="equation-container">
+            <div class="equation-expression">
+                @foreach (var item in Model.Items)
+                {
+                    <h2 class="product-quantity-and-cost">@item.Price.ToMoney() x @item.Count</h2>
+                    @if((Model.Items.IndexOf(item) + 1) < Model.Items.Count)
+                    {
+                        <h2 class="sum-symbol">+</h2>
+                    }
+                }
+            </div>
+            <h2 class="product-total-amount">@(Model.TotalPrice.ToMoney())</h2>
+            <h5 class="product-total-count">Количество товаров в корзине: @(Model.TotalCount)</h5>
+        </div>
+    </div>
+</div>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer/buying/cart-details.css" asp-append-version="true" />
+}

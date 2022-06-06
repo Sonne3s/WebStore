@@ -1,0 +1,97 @@
+﻿@using WebStore.Areas.Admin.ViewModels
+@using WebStore.Models.Enumerations
+@model EditViewModel
+@{
+    Layout = "_Layout";
+    var url = @Url.Action("Edit", "Product");
+    var ajaxAttribute = new Ajax.Unobtrusive
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Post,
+        Success = "EditFormSuccess"
+    };
+    var redirectUrl = Url.Action("List", "Product");
+    var redirectUrlAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, DataPurposes.RedirectToListLink);
+}
+<div class="container"> 
+    <ul class="nav nav-tabs check-out" id="myTab" role="tablist">
+        <li class="nav-item check-out" role="presentation">
+            <button class="nav-link active" id="base-properties-tab" data-bs-target="#base-properties-container" type="button" role="tab">Основные характеристики</button>
+        </li>
+        <li class="nav-item check-out" role="presentation">
+            <button class="nav-link" id="properties-tab" data-bs-target="#properties-container" type="button" role="tab">Дополнительные характеристики</button>
+        </li>
+        <li class="nav-item check-out" role="presentation">
+            <button class="nav-link" id="images-tab" data-bs-target="#images-container" type="button" role="tab">Изображения</button>
+        </li>
+    </ul>
+    <div class="tab-content border-top rounded-bottom border-info row" id="myTabContent">
+        <div class="tab-pane my-3 fade col-8 offset-2 active show" id="base-properties-container" role="tabpanel" aria-labelledby="payment-tab">
+            <partial name="ProductBaseTab" model=Model />
+        </div>
+        <div class="tab-pane my-3 fade col-8 offset-2" id="properties-container" role="tabpanel">
+            <partial name="ComponentsTab" model=Model.ComponentsTab />
+        </div>
+        <div class="tab-pane my-3 fade col-8 offset-2" id="images-container" role="tabpanel">
+            <!form action="@url" enctype="multipart/form-data" id="@Constants.Admin.Edit.FormId" @Html.Raw(ajaxAttribute)>
+                <partial name="../ProductEdit/ImagesTab" model=Model.ImagesTab />
+            </!form>
+        </div>
+    </div>
+</div>
+<a href="@redirectUrl" @Html.Raw(redirectUrlAttribute)></a>
+
+<div class="modal fade" id="Modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <h1 class="text-center"><i class="emblem-loader-emblem bi bi-tornado"></i><span class="emblem-loader-text">CL</span></h1>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="SubModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body">
+                <h1 class="text-center"><i class="emblem-loader-emblem bi bi-tornado"></i><span class="emblem-loader-text">CL</span></h1>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/product/edit.min.css" asp-append-version="true" />
+}
+
+<script src="~/js/Base.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/BaseTab.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Tabs.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Components.js" asp-append-version="true"></script>
+@*<script src="~/js/AddComponentButtons.js" asp-append-version="true"></script>
+*@<script src="~/js/PropertyInput.js" asp-append-version="true"></script>
+<script src="~/js/ImageLoader.js" asp-append-version="true"></script>
+<script src="~/js/CreatePropertyModal.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/PropertyValueUnit.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Selects.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Modals.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Loaders.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/AddPropertyChoise.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/Validate.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit/ComponentsTab.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductProperty/CreateButton.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductProperty/CreationPage.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductProperty/TypeSelection.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductProperty/UnitSelection.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductProperty/Input.js" asp-append-version="true"></script>
+<script src="~/js/Admin/ProductComponent/Container.js" asp-append-version="true"></script>
+<script src="~/js/Admin/Product/Edit.js" asp-append-version="true"></script>

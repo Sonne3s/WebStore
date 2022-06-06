@@ -1,0 +1,59 @@
+﻿.page-breadcrumb {
+    top: 10px;
+    margin-left: 10px;
+    padding-left: 300px;
+    position: absolute;
+    background-color: #f2f9fe;
+
+    &::after {
+        content: " ";
+        display: block;
+        height: 40px;
+        width: 50px;
+        background-color: #f2f9fe;
+        margin: -40px -20px;
+        float: right;
+        transform: skew(316deg);
+    }
+
+    .page-breadcrumb-ol {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0 !important;
+        padding-left: 3rem !important;
+        padding: 0.5rem !important;
+        background-color: $color-background-second;
+        height: 40px;
+
+        .page-breadcrumb-item {
+            //@extend .breadcrumb-item;
+            color: $color-second !important;
+            opacity: 0.6;
+
+            + .page-breadcrumb-item {
+                padding-left: $breadcrumb-item-padding-x;
+
+                &::before {
+                    float: left; // Suppress inline spacings and underlining of the separator
+                    padding-right: $breadcrumb-item-padding-x;
+                    content: var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
+                    float: left;
+                    margin-top: -23px;
+                    color: white;
+                    font-size: 40px;
+                }
+            }
+
+            &.active, &:hover {
+                opacity: 1;
+                z-index: 1;
+            }
+
+            a {
+                text-decoration: none;
+                color: $color-second !important;
+            }
+        }
+    }
+}

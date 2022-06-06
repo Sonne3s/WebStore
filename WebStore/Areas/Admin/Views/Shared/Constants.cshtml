@@ -1,0 +1,94 @@
+﻿@using WebStore.HtmlHelpers.Admin.Components
+
+<script>
+    var Admin = {
+        Component: {
+            Item: {
+                PurposeAttr: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentItem)))"
+            },
+
+            PropertiesContainer: {
+                PurposeAttr:  "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentPropertiesContainer)))",
+                AddPropertyInputLink: { 
+                    PurposeAttr: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.AddPropertyInputLink)))"
+                },
+                Container: {
+                    Purpose: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.PropertiesContainer)))"
+                } 
+            }
+        },
+        Edit: {
+            ComponentsTab: {
+                ComponentsPropertiesContainer: {
+                    Purpose: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsPropertiesContainer)))",
+                }
+            },
+            FormId: "@(Html.Raw(Constants.Admin.Edit.FormId))",
+            RedirectLink: {
+                Purpose: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.RedirectToListLink)))"
+            }
+        },
+        ProductComponent: {
+            Container: {
+                Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsContainer))", 
+                Buttons: {
+                    AddProductPropertyContainer: {
+                        Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.AddPropertiesContainerButton))"
+                    }
+                }
+            },
+            Item: {
+                Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentItem))"
+            }
+        },
+        ProductProperty: {
+            CreationPage: {
+                TypeId: {
+                    Text: "@(Html.Raw(Constants.Admin.ProductProperty.CreationPage.TypeId.Text))",
+                    Integer: "@(Html.Raw(Constants.Admin.ProductProperty.CreationPage.TypeId.Integer))",
+                    Decimal: "@(Html.Raw(Constants.Admin.ProductProperty.CreationPage.TypeId.Decimal))"
+                },
+                UnitSelection: {
+                    PurposeSelector: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.UnitSelection)))",
+                    Buttons: 
+                    {
+                        Edit: "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.UnitCreationPageButton)))"
+                    }
+                },
+                Form: {
+                    Purpose:  "@(Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.CreationPageForm)))"
+                }
+            },
+            Input: {
+                Button: {
+                    Remove: {
+                        Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.RemoveInputButton))"
+                    }
+                },
+                Container: {
+                    Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.InputContainer))"
+                },
+                Item: {
+                    Button: {
+                        Remove: {
+                            Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.RemoveInputItemButton))"
+                        }
+                    },
+                    Container: {
+                        Purpose: "@Html.Raw(DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.InputItemContainer))"
+                    }
+                }
+            }
+        }
+    }
+
+    var Bootstrap = {
+        DataAttrName: {
+            Target: "@(Html.Raw(DataAttributes.AttributeName.Bootstrap.Target))"
+        }
+    }
+
+    var DataAttrName = {
+        Id : "@(Html.Raw(DataAttributes.AttributeName.Id))"
+    }
+</script>

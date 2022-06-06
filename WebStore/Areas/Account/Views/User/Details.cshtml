@@ -1,0 +1,54 @@
+﻿@using WebStore.Areas.Account.ViewModels
+@using static WebStore.Areas.Account.ViewModels.UserDetailsViewModel
+@model UserDetailsViewModel
+@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Личные данные", "#", true)
+    };
+}
+
+<form class="user-details-form">
+    <div class="email-container">
+        <label class="input-label" for="email">Адрес электронной почты</label>
+        <input class="input" type="email" id="email" name="email" value="@Model.Email" placeholder="email@example.com" disabled>
+    </div>
+    <div class="last-name-container">
+        <label class="input-label" for="lastname">Фамилия</label>
+        <input class="input" type="text" id="lastname" name="lastname" value="@Model.LastName">
+    </div>
+    <div class="first-name-container">
+        <label class="input-label" for="firstname">Имя</label>
+       <input class="input" type="text" id="firstname" name="firstname" value="@Model.FirstName">
+    </div>
+    <div class="middle-name-container">
+        <label class="input-label" for="middlename">Отчество</label>
+       <input class="input" type="text" id="middlename" name="middlename" value="@Model.MiddleName">
+    </div>
+    <div class="address-container">
+        <label class="input-label" for="address">Адрес</label>
+        <input class="input" type="text" id="address" name="address" placeholder="начните вводить адрес, чтобы система начала поиск корректного адреса" value="@Model.Address" data-action="dadata" data-bs-toggle="dropdown" data-bs-auto-close="true">
+        <ul class="input-dropdown" aria-labelledby="defaultDropdown">
+            <li class="input-dropdown-item sample"></li>
+        </ul>
+    </div>
+    <div class="phone-container">
+        <label class="input-label" for="phone">Номер телефона</label>
+        <input class="input" type="tel" id="phone" name="phone" value="@Model.Phone" placeholder="например: 9998887766" pattern="^(7|8|0)?(\d{3})(\d{3})(\d{4})$" title="ожидаемый формат ввода номера: +79998887766 или 9998887766 или 89998887766 или +7(999) 888-7766">
+    </div>
+    <div class="company-container">
+        <label class="input-label" for="company">Компания</label>
+        <input class="input" type="text" id="company" name="company" value="@Model.Company">
+    </div>
+    <button class="button">Сохранить изменения</button>
+</form>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/account/user/details.min.css" asp-append-version="true" />
+}
+
+<script src="~/js/DaData.js" asp-append-version="true"></script>

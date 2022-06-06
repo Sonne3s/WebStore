@@ -1,0 +1,38 @@
+﻿@using WebStore.Areas.Admin.ViewModels
+@model EditViewModel
+@{
+    var editProductTypeDisabled = (!Model.ProductTypes.Any(t => t.Selected == true) ? "disabled" : string.Empty);
+    var editProducerDisabled = (!Model.Producers.Any(t => t.Selected == true) ? "disabled" : string.Empty);
+    var modalDataProperties = "data-bs-target=#Modal data-bs-toggle=modal";
+    var productTypeDataUrls = $"data-partial={@Url.Action("CreateProductType")} data-val={@Url.Action("ProductTypesList", new { ProductId = Model.Id })}";
+    var producerDataUrls = $"data-partial={@Url.Action("CreateProducer")} data-val={@Url.Action("ProducersList", new { ProductId = Model.Id })}";
+
+    var productTypePurposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, DataPurposes.ProductTypeContainer);
+    var producerPurposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, DataPurposes.ProducerContainer);
+}
+
+<input type="hidden" value="@Model.Id" id="id" name="id"/>
+<div class="form-group" @Html.Raw(productTypePurposeAttribute)>
+    <partial name="../ProductEdit/ProductType" model=Model.ProductTypes />
+</div>
+<div class="form-group" @Html.Raw(producerPurposeAttribute)>
+    <partial name="../ProductEdit/Producer" model=Model.Producers />
+</div>
+<div class="form-group">
+    <label for="name">Наименование товара</label>
+    <input type="text" form="@Constants.Admin.Edit.FormId" class="form-control" id="name" name="name" placeholder="Введите наименование" value="@Model.Name" required>
+</div>
+<div class="form-group">
+    <label for="price">Цена</label>
+    <div class="input-group">
+        <input type="number" form="@Constants.Admin.Edit.FormId" value="@Model.Price" class="form-control" name="price" id="price" step=".01" required>
+        <span class="input-group-text">₽</span>
+    </div>
+</div>
+<div class="form-group">
+    <label for="description">Описание товара</label>
+    <textarea class="form-control" form="@Constants.Admin.Edit.FormId" id="description" name="description" rows="3">@Model.Description</textarea>
+</div>
+<button type="button" class="btn btn-outline-primary w-100 mt-4" data-next-tab="#properties-tab" data-action="next">Далее</button>

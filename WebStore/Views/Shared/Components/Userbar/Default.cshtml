@@ -1,0 +1,40 @@
+﻿@using WebStore.Helpers.IHelpers
+@model (IUserModel User, IUserHelper Helper)
+
+<nav class="page-userbar">
+    <button class="userbar-button" type="button">
+        <i class="icon"></i>
+    </button>
+    <div class="userbar-menu">
+        @if (Model.User == null || Model.User.IsAnonimous)
+        {
+            <h4 class="header">Вход в аккаунт</h4>
+            <form asp-action="LogIn" asp-controller="Auth" asp-area="Account" class="form">
+                <div class="email-section">
+                    <label for="email">Адрес эл.почты</label>
+                    <input type="email" id="email" name="email" placeholder="email@example.com">
+                </div>
+                <div class="password-section">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="Пароль">
+                </div>
+                <button type="submit" class="button-enter">Войти</button>
+            </form>
+            <a asp-action="Registration" asp-controller="Auth" asp-area="Account" class="registration-link">Регистрация</a>
+        }
+        else
+        {
+            <h4 class="header">@Model.User.Login</h4>
+            <a asp-action="Details" asp-controller="User" asp-area="Account"  class="user-details-link">Личные данные</a>
+            <a asp-action="List" asp-controller="Purchase" asp-area="Account" class="purchase-list-link">Заказы</a>
+            if(Model.Helper.IsAdministrator(Model.User)) 
+            {
+                <h4 class="dropdown-header">Администратор</h4>
+                <a asp-action="List" asp-controller="Product" asp-area="Admin" class="product-list-link">Настроить каталог</a>
+            }
+            <div class="logout-section">
+                <a asp-action="LogOut" asp-controller="Auth" asp-area="Account" class="button-logout">Выйти</a>
+            </div>
+        }
+    </div>
+</nav>

@@ -1,0 +1,297 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/*@import url('https://fonts.googleapis.com/css2?family=Ruge+Boogie&display=swap');
+*/
+
+.cool-life {
+    font-family: 'Ruge Boogie', cursive;
+}
+
+    .cool-life.nav-link {
+        font-size: 1.2em;
+    }
+    .cool-life.navbar-toggler {
+        text-decoration: none;
+        font-size: 2em;
+    }
+
+        .cool-life.nav-link:after {
+            content: ' ';
+            display: block;
+            float: right;
+            background: white;
+            margin: -0.4em 10px;
+            height: 2em;
+            width: 1px;
+        }
+
+        .cool-life.nav-link .bi-tornado {
+            color: #223894;
+        }
+    .cool-life.navbar-toggler .bi-tornado {
+        color: #223894;
+    }
+
+h1 .bi-tornado {
+    color: #223894;
+}
+
+.emblem-loader-emblem {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 0.03em;
+    -webkit-text-stroke-color: #223894;
+    animation: emblem-loader-gradient 3s ease infinite;
+}
+
+.emblem-loader-text {
+    font-family: 'Ruge Boogie', cursive;
+    color: white;
+    -webkit-text-stroke-width: 0.035em;
+    -webkit-text-stroke-color: #223894;
+    animation: emblem-loader-text-shadow 3s cubic-bezier(.28, .92, 1, .75) alternate infinite;
+}
+
+@keyframes emblem-loader-gradient {
+    0% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 100%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+    }
+
+    4% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 90%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+    }
+
+    8% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 80%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+    }
+
+    12% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 70%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+    }
+
+    16% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 60%, rgba(168,221,237,1) 80%, rgba(34,56,148,1) 100%);
+    }
+
+    20% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 50%, rgba(168,221,237,1) 70%, rgba(34,56,148,1) 90%);
+    }
+
+    24% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 40%, rgba(168,221,237,1) 60%, rgba(34,56,148,1) 80%);
+    }
+
+    28% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 30%, rgba(168,221,237,1) 50%, rgba(34,56,148,1) 70%);
+    }
+
+    32% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 20%, rgba(168,221,237,1) 40%, rgba(34,56,148,1) 60%);
+    }
+
+    36% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 10%, rgba(168,221,237,1) 30%, rgba(34,56,148,1) 50%);
+    }
+
+    40% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 20%, rgba(34,56,148,1) 40%);
+    }
+
+    44% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 30%);
+    }
+
+    48% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 0%);
+    }
+
+    100% {
+        background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 0%);
+    }
+}
+
+@keyframes emblem-loader-text-shadow {
+    0% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 0px #0dcaf0;
+    }
+
+    20% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 0px #0dcaf0;
+    }
+
+    30% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 4px #0dcaf0;
+    }
+
+    40% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 8px #0dcaf0;
+    }
+
+    50% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 12px #0dcaf0;
+    }
+
+    60% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 24px #0dcaf0;
+    }
+
+    70% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 48px #0dcaf0;
+    }
+
+    80% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 96px #0dcaf0;
+    }
+
+    90% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 192px #0dcaf0;
+    }
+
+    100% {
+        text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 384px #0dcaf0;
+    }
+}
+
+@media (max-width: 576px) {
+    .categories-collapse {
+        position: fixed;
+        left: 0px;
+        width: 100%;
+        z-index: 9999;
+        background-color: white;
+        background-clip: border-box;
+        border: 1px solid #0dcaf0;
+        border-radius: 0.25rem;
+    }
+}
+
+@media all {
+    .card-fixed {
+        position: fixed;
+    }
+}
+
+.nav-pills .nav-link:not(.active, .disabled) {
+    color: #6C4F0A;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #BFA568;
+}
+
+.bg-camel {
+    background-color: #BFA568!important;
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+    color: #568363;
+}
+
+.check-out .nav-link.active {
+    border-color: var(--bs-info);
+    border-bottom-color: white;
+}
+
+.nav-item.check-out {
+    position: relative;
+    bottom: -1px;
+}
+
+.fixed-cell {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.offcanvas-cart-btn {
+    z-index: 1;
+}
+
+.offcanvas-cart-btn a,button {
+    background-color: white;
+}
+
+/*kludges*/
+
+.nav.nav-tabs.check-out {
+    margin-left: 15%;
+}
+
+.tab-form {
+    border-style: solid;
+    border-width: 0px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+#receiving .btn-group {
+    height: 9em;
+}
+
+#receiving .btn:not(.bg-camel) {
+    font-size: 4em;
+}
+
+.form-group .error {
+    border-color: darkred;
+}
+
+.card.error {
+    border-color: darkred;
+}
+
+.form-group .error:focus {
+    border-color: darkred;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01) inset, 0 0 8px red;
+    outline: 0 none;
+}
+
+.form-group .valid {
+    border-color: darkseagreen;
+}
+
+.card.valid {
+    border-color: darkseagreen;
+}
+
+.form-group .valid:focus {
+    border-color: darkseagreen;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01) inset, 0 0 8px green;
+    outline: 0 none;
+}
+
+label.error {
+    color: darkred;
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+input::-webkit-input-placeholder {
+    color: #BFA568 !important;
+}

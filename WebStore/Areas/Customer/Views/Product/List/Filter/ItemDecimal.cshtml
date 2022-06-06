@@ -1,0 +1,13 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model ProductListFilterItemViewModel
+
+<div class="filter-item-body decimal">
+    <div class="filter-input-group">
+        <input type="number" placeholder="от @Model.Values.FirstOrDefault()" class="filter-input-group-number" name=@($"Properties[{Model.OrderId}].Values[0]") step=".01">
+        <span class="filter-input-group-text">@Model.UnitName</span>
+    </div>
+    <div class="filter-input-group">
+        <input type="number" placeholder="до @Model.Values.LastOrDefault()" class="filter-input-group-number" name=@($"Properties[{Model.OrderId}].Values[1]") step=".01">
+        <span class="filter-input-group-text">@Model.UnitName</span>
+    </div>
+</div>

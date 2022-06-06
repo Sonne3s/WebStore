@@ -1,0 +1,30 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@using WebStore.Extensions
+@model CartOffCanvasViewModel
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <div class="btn-group">
+            <a asp-action="CartDetails" asp-controller="Buying" asp-area="Customer" class="btn btn-outline-info" data-bs-toggle="popover" title="Развернуть">
+                <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <a asp-action="CheckOut" asp-controller="Buying" class="btn btn-outline-info" data-bs-toggle="popover" title="Перейти к оформлению">
+                <i class="bi bi-cart-check"></i>
+            </a>
+            <a href="#" data-bs-toggle="popover" title="Очистить корзину">
+                <i class="bi bi-cart-x"></i>
+            </a>
+        </div>
+        <h5 class="offcanvas-title position-relative" id="offcanvasExampleLabel">
+            @(Model.Total.ToMoney())
+            <span class="position-absolute top-0 start-100 translate-middle-y badge rounded-pill bg-danger">
+                @(Model.Count)
+                <span class="visually-hidden">товаров в корзине</span>
+            </span>
+        </h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+    <div class="offcanvas-body">
+        <vc:cart-list />
+    </div>
+</div>

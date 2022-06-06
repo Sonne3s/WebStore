@@ -1,0 +1,9 @@
+﻿<nav class="page-cartbar">
+    <button class="btn btn-outline-info position-relative" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+        <i class="bi bi-cart text-white"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" @*@Html.Raw(quantityGoodsInCartPurpose)*@>
+            @*@(Model.CartItemsCount)*@2
+        </span>
+        <span class="visually-hidden">экземпляров в корзине</span>
+    </button>
+</nav>

@@ -1,0 +1,10 @@
+﻿@model List<(string Name, string Href, bool IsActive)>
+
+<nav class="page-breadcrumb">
+    <ol class="page-breadcrumb-ol">
+        @foreach(var breadcrumb in Model)
+        {
+            <li class="page-breadcrumb-item @(breadcrumb.IsActive ? "active" : string.Empty)"><a href="@breadcrumb.Href">@breadcrumb.Name</a></li>
+        }
+    </ol>
+</nav>

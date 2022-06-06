@@ -1,0 +1,48 @@
+﻿@import '../../customer/_layout.scss';
+
+.home-page {
+    .home-page-logo {
+        position: fixed;
+        top: 10vmax;
+        margin-left: 30vmax;
+
+        .logo-emblem {
+            @include logo-large-emblem();
+        }
+
+        .logo-label {
+            @include logo-large-label();
+        }
+    }
+
+    .home-page-background-container {
+        margin-left: 25vmax;
+        height: 22vmax;
+        width: 50vmax;
+        position: fixed;
+        top: 7vmax;
+        z-index: -1;
+        border-radius: 50% 20%/10% 40%;
+        overflow: hidden;
+    }
+
+    .home-page-background {
+        //background-image: url(../../../img/site/home_page_background.jpg);
+        width: 100%;
+        object-fit: contain;
+        -webkit-mask-image: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,1) 0%,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%);
+        mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+    }
+
+    .home-page-link {
+        font-family: mrDopestyleG;
+        position: fixed;
+        top: 25vmax;
+        margin-left: 40vmax;
+        font-size: 3.5vmax;
+        text-decoration: none;
+        -webkit-text-stroke-width: 0.01em;
+        -webkit-text-stroke-color: white;
+        color: #223894;
+    }
+}

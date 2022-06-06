@@ -1,0 +1,50 @@
+﻿@using WebStore.Areas.Customer.ViewModels
+@using WebStore.Extensions
+@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+@model ProductListItemViewModel;
+@{
+    var purposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ProductListItem);        
+    var itemCartSectionPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ItemCartSection);
+    var itemDataIdAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Id, Model.Id.ToString());
+    var itemCartSectionAttributes = string.Join(" ", itemCartSectionPurpose, itemDataIdAttribute);
+}
+
+<div class="product" @Html.Raw(purposeAttribute)>
+    <div class="product-card">
+        <h5 class="product-card-header">
+            @Model.Name
+            <a asp-action="Details" asp-controller="Product" asp-area="Customer" asp-route-id="@Model.Id" class="stretched-link"></a>
+        </h5>
+        <div class="product-card-body">
+            <div id="productImages@(Model.Id)" class="product-images-carousel carousel slide">
+                <div class="product-images-carousel-indicators carousel-indicators">
+                    @foreach (var img in @Model.Images)
+                    {
+                        <button type="button" class="product-images-carousel-indicator @(@Model.Images.IndexOf(img) == 0 ? "active" : string.Empty)" data-bs-target="#productImages@(Model.Id)" data-bs-slide-to="@(@Model.Images.IndexOf(img))"></button>
+                    }
+                </div>
+                <div class="product-images">
+                    @foreach (var img in @Model.Images)
+                    {
+                        <div class="product-image carousel-item @(@Model.Images.IndexOf(img) == 0 ? "active" : string.Empty)">
+                            <img src="\@(img)" class="d-block w-100" alt="...">
+                        </div>
+                    }                    
+                </div>
+            </div>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="stretched-link"></a>
+        </div>
+        <div class="product-footer">
+            <p class="h2">
+                @(Model.Price.ToMoney())
+            </p>
+            <div class="input-group" @Html.Raw(itemCartSectionAttributes)>
+                <partial name="List\ItemCartSection" model=@(new ProductListItemCartSectionViewModel(Model.Id, Model.Count, Model.Total))/>
+            </div>
+@*            <vc:add-remove-to-cart-buttons value="a" />
+*@        </div>
+    </div>
+</div>

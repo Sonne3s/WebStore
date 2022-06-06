@@ -1,0 +1,38 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductEdit
+@model CreateOrUpdateProductTypeModalViewModel
+@{
+    var formUrl = Url.Action("CreateOrUpdateProductType", "ProductEdit", new { Area = "Admin" });
+    var deleteUrl = Url.Action("DeleteProductType", "ProductEdit", new { Area = "Admin" });
+    var formAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Post,
+        Update = DataAttributes.InsertAttributeSelector(
+            DataAttributes.AttributeName.Purpose, DataPurposes.ProductTypeContainer),
+        Mode = Ajax.Unobtrusive.ModeValue.Replace,
+    };
+}
+
+<!form action="@formUrl" @Html.Raw(formAjaxAttributes)>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">@(Model.Id.HasValue ? "Изменение типа товара" : "Добавление нового типа товара")</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="Id" name="Id" value="@(Model?.Id)">
+        <div class="form-group mb-3">
+            <label for="TypeName">Тип товара</label>
+            <input type="text" class="form-control" id="TypeName" name="TypeName" value="@(Model?.Name)" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Сведения о типе товара</label>
+            <textarea class="form-control" id="Description" name="Description" value="@(Model?.Description)" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" formaction="@deleteUrl" class="btn btn-outline-danger" data-bs-dismiss="modal" @(Model.Id.HasValue ? string.Empty : "disabled")>Удалить</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">@(Model.Id.HasValue ? "Изменить" : "Добавить")</button>
+        </div>
+    </div>
+</!form>

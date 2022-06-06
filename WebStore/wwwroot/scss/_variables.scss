@@ -1,0 +1,54 @@
+﻿$color-background-first: #b4f0fc;
+$color-background-second: #f2f9fe; //f0f8ff
+$color-background-third: ede5d3;
+
+$color-first: #0dcaf0; //0dcaf0
+$color-second: #bfa568; //bfa568
+$color-third: #223894;
+$color-fourth: #0dcaf0; 
+
+$color-scrollbar-thumb: $color-third;
+
+$color-button: $color-fourth;
+$color-button-hover: black;
+$color-background-button: white;
+$color-background-button-hover: $color-fourth;
+
+$color-primary-button: $color-third;
+$color-primary-button-hover: white;
+$color-background-primary-button: white;
+$color-background-primary-button-hover: $color-third;
+
+$color-secondary-button: $color-second;
+$color-secondary-button-hover: white;
+$color-background-secondary-button: white;
+$color-background-secondary-button-hover: $color-second;
+
+$color-background-input-group-text: $color-background-second;
+$color-border-filter-input-group: $color-first;
+
+$color-background-product-card-header: $color-background-second;
+$color-background-product-card-footer: $color-background-second;
+$color-border-product-card-footer: $color-first;
+
+$header-height: 56px;
+$header-margin-top:8px;
+
+$footer-height: 38px;
+
+$main-gutter-top: 30px;
+$main-margin-top: calc($header-height + $header-margin-top + $main-gutter-top);
+$main-height: calc(100vh - ($main-margin-top + $footer-height));
+
+$filters-form-buttons-height: 38px;
+$filters-height: calc($main-height - $filters-form-buttons-height);
+
+$pagination-section-height: 70px;
+
+$products-height: calc($main-height);
+
+$product-gutter-left: 0.5rem;
+$product-gutter-right: 0.5rem;
+$product-gutter-top: 15px;
+$product-gutter-bottom: 15px;
+$product-height: calc(($products-height /2 - ($product-gutter-top + $product-gutter-bottom)) - 40px)

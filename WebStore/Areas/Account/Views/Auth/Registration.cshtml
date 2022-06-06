@@ -1,0 +1,76 @@
+﻿@using WebStore.Areas.Account.ViewModels
+@model AuthRegistrationViewModel
+@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Регистрация", "#", true)
+    };
+}
+
+<ul class="registration-tab-header" id="myTab" role="tablist">
+    <li class="tab-item" role="presentation">
+        <button class="tab-button active" id="authorization-tab" data-bs-toggle="tab" data-bs-target="#authorization" type="button" role="tab">Основное</button>
+    </li>
+    <li class="tab-item" role="presentation">
+        <button class="tab-button" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button" role="tab">Личные данные</button>
+    </li>
+</ul>
+<form asp-action="Register" asp-controller="Account" class="needs-validation">
+    <div class="registration-tab-body" id="myTabContent">
+        <div class="authorization-tab active show" id="authorization" role="tabpanel">
+            <div class="email-container">
+                <label class="input-label" for="emailInput">Адрес эл.почты</label>
+                <input class="input" type="email" id="email" name="email" class="form-control" value="@Model.Email" placeholder="email@example.com">
+            </div>
+            <div class="password-container">
+                <label class="input-label" for="passwordInput">Пароль</label>
+                <input class="input" type="password" id="password" name="password" value="@Model.Password" placeholder="Пароль">
+            </div>
+            <div class="password-confirmation-container">
+                <label class="input-label" for="passwordInput">Подтверждение пароля</label>
+                <input class="input" type="password" id="passwordconfirmation" name="passwordconfirmation" placeholder="Пароль">
+            </div>
+        </div>
+        <div class="account-tab" id="account" role="tabpanel">
+            <div class="last-name-container form-group">
+                <label class="input-label" for="last-name">Фамилия</label>
+                <input class="input" type="text" id="lastname" name="lastname" value="@Model.LastName">
+            </div>
+            <div class="first-name-container form-group">
+                <label class="input-label" for="firstname">Имя</label>
+                <input class="input" type="text" id="firstname" name="firstname" value="@Model.FirstName">
+            </div>
+            <div class="middle-name-container form-group">
+                <label class="input-label" for="middlename">Отчество</label>
+                <input class="input" type="text" id="middlename" name="middlename" value="@Model.MiddleName">
+            </div>
+            <div class="phone-container form-group">
+                <label class="input-label" for="phone">Номер телефона</label>
+                <input class="input" type="tel" id="phone" name="phone" value="@Model.Phone" pattern="(^(7|8|0)?(\d{3})(\d{3})(\d{4})$)|(\+7\(\d{3}\) \d{3}-\d{4})" placeholder="например: 9998887766" title="ожидаемый формат ввода номера: +79998887766 или 9998887766 или 89998887766 или +7(999) 888-7766">
+            </div>
+            <div class="company-container form-group">
+                <label class="input-label" for="company">Компания</label>
+                <input class="input" type="text" id="company" name="company" value="@Model.Company">
+            </div>
+            <div class="address-container form-group">
+                <label class="input-label" for="middlename">Адрес</label>
+                <input class="input" type="text" id="address" name="address" placeholder="начните вводить адрес, чтобы система начала поиск корректного адреса" value="@Model.MiddleName" data-action="dadata" data-bs-toggle="dropdown" data-bs-auto-close="true">
+                <ul class="input-dropdown">
+                    <li class="input-dropdown-item sample"></li>
+                </ul>
+            </div>
+        </div>
+        <button type="submit" class="submit-button">Зарегистрировать</button>
+    </div>
+</form>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/account/auth/registration.min.css" asp-append-version="true" />
+}
+
+<script src="~/js/DaData.js" asp-append-version="true"></script>
+<script src="~/js/PhoneFormatConverter.js" asp-append-version="true"></script>

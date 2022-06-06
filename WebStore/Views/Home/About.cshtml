@@ -1,0 +1,180 @@
+﻿@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("О нас", Url.Action("Home", "About"), true)
+    };
+}
+<main class="about-page">
+    <section class="about-section">
+        <h4 class="about-header" id="about-header">О нас</h4>
+        <h6 class="about-sub-header">«Cool Life» - магазин кондиционеров, систем вентиляции и отопления!</h6>
+        <p>
+            В магазине «Cool Life» вы найдете широкий ассортимент климатической техники для бытового и промышленного использования.
+            За несколько лет работы мы монтировали кондиционеры, вентиляционное и тепловое оборудование более чем на 2000 объектов.
+            Мы гарантируем низкие цены на установку и доставку, а также постоянное обновление каталога!
+        </p>
+        <div class="navigation-section">
+            <nav class="navigation-bar">
+                <nav class="navigation-items">
+                    <a class="navigation-item" href="#about-header">О нас</a>
+                    <a class="navigation-item" href="#address-header">Адрес</a>
+                    <a class="navigation-item" href="#phone-header">Контакты</a>
+                    <p class="navigation-item"></p>
+                </nav>
+            </nav>
+            <div class="other-information">
+                <h6>Что предлагает магазин климатической техники «Cool Life»:</h6>
+                <ul>
+                    <li>Основное направление – продажа кондиционеров и сплит систем для домов, квартир, офисов, производственных и других помещений</li>
+                    <li>Осушители, очистители и увлажнители воздуха, климатические комплексы</li>
+                    <li>Накопительные и проточные водонагреватели, газовые колонки</li>
+                    <li>Продажа по цене производителя расходных материалов для систем кондиционирования</li>
+                    <li>Дизельные, газовые, твердотопливные теплогенераторы прямого и непрямого нагрева</li>
+                    <li>Тепловые пушки, завесы, обогреватели, дестратификаторы</li>
+                    <li>Бытовые и промышленные вентиляторы</li>
+                    <li>Настенные, напольные и электрические котлы</li>
+                    <li>Широкий выбор товара и низкие цены на насосы и насосные станции</li>
+                    <li>Электрический теплый пол, бытовые фильтры и картриджи</li>
+                    <li>Комплексные системы управления «Умный дом»</li>
+                    <li>Радиаторы отопления и сушилки для рук</li>
+                </ul>
+            </div>
+        </div>
+        <h6>6 причин купить кондиционер именно в «Cool Life»:</h6>
+        <ol>
+            <li>
+                Гарантия качества. Климатическую технику всегда лучше приобретать у официального дилера.
+                В этом случае у вас будет низкая цена на кондиционер, а также уверенность в качестве модели.
+                У нас есть договоры с большим количеством сервисных центров.
+            </li>
+            <li>
+                Покупка с доставкой.
+                Наш офисы постоянно действуют в городах Белгород и Валуйки.
+                Благодаря этому мы оперативно привозим технику в любой населенный пункт области.
+            </li>
+            <li>
+                Собственные монтажные бригады.
+                За много лет специалисты научились работать с нестандартными объектами.
+                Опытные промышленные альпинисты находят выход в самых сложных ситуациях.
+                Стоимость монтажа кондиционера рассчитывается индивидуально.
+            </li>
+            <li>
+                Экономия.
+                Мы предлагаем технику известных брендов по гораздо более выгодной цене.
+                Чтобы сэкономить, можно купить в магазине с бесплатной доставкой.
+                Бесплатная установка оборудования также снижает сумму в чеке.
+            </li>
+            <li>
+                Возможность установки кондиционера прямо в день покупки и в удобное для вас время!
+            </li>
+            <li>
+                Скидки и акции.
+                Спецпредложения регулярно появляются на нашем сайте в соответствующем разделе! Действуют межсезонные распродажи.
+            </li>
+        </ol>
+        <h6>От чего зависит цена на кондиционер</h6>
+        <p>
+            Мы следим за рынком и постоянно корректируем прайс на климатическую технику.
+            Это позволяет нам держать цены ниже конкурентов и постоянно обновлять ассортимент.
+            На данный момент на сайте есть оборудование, доступное каждому: от 12800 до 60000 рублей.
+        </p>
+        <p>
+            Для вас мы также разработали удобную систему взаимодействия – бесплатные консультации с выездом на объект.
+            Специалист приедет к вам домой или в офис, чтобы помочь с подбором оборудования.
+        </p>
+        <p>
+            Чтобы приобрести климатическую технику с бесплатной доставкой, необходимо сделать заказ с нашей установкой.
+            Купить кондиционер с бесплатной установкой возможно при заказе определенных моделей.
+        </p>
+        <p>
+            Продажа сплит систем в магазине осуществляется по наличному и безналичному расчету.
+            Для быстрого поиска необходимого оборудования воспользуйтесь удобной формой на сайте.
+            Здесь технику можно подобрать по параметрам мощности, стоимости, площади или производителя.
+        </p>
+    </section>
+    <hr />
+    <section class="address-section" id="map">
+        <h4 id="address-header">Где нас найти?</h4>
+        <p>
+            Наш офис расположен по адресу: «Россия, г.Белгород переулок 3-й Северный д.18»
+        </p>
+        <div class="map-section">
+            <div class="map-container">
+                <ul class="navigation-tab-header" role="tablist">
+                    <li class="yandex-map" role="presentation">
+                        <button class="link active" id="yandex-map-tab" data-bs-toggle="tab" data-bs-target="#yandex-map" type="button" role="tab">
+                            Яндекс карты
+                        </button>
+                    </li>
+                    <li class="google-map" role="presentation">
+                        <button class="link" id="google-map-tab" data-bs-toggle="tab" data-bs-target="#google-map" type="button" role="tab">
+                            Google maps
+                        </button>
+                    </li>
+                </ul>
+                <div class="navigation-tab-body">
+                    <div class="yandex-map-container show active" id="yandex-map" role="tabpanel">
+                        <iframe src="https://api-maps.yandex.ru/frame/v1/-/CCUJ4YgD0B" width="560" height="400" frameborder="0"></iframe>
+                    </div>
+                    <div class="google-map-container" id="google-map" role="tabpanel">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1265.5906245919823!2d36.5138812!3d50.6237497!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4126153a11064c7f%3A0x6770fc356555f1cb!2zMy3QuSDQodC10LLQtdGA0L3Ri9C5INC_0LXRgC4sIDE4LCDQkdC10LvQs9C-0YDQvtC0LCDQkdC10LvQs9C-0YDQvtC00YHQutCw0Y8g0L7QsdC7LiwgMzA4MDI1!5e0!3m2!1sru!2sru!4v1653657826032!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr />
+    <section class="contacts-section">
+        <h4 id="phone-header">Как с нами связаться?</h4>
+        <div class="contacts-container">
+            <div class="contacts-block">
+                <ul class="phone-numbers">
+                    <li class="phone-number">
+                        <a href="tel:+79998337963" class="segment-link link-icon"></a>
+                        <span class="segment-number">
+                            <span class="number">8-999-833-7953</span>
+                            <span class="description">(обращаться по вопросам покупки/установки)</span>
+                        </span>
+                        <button class="segment-link copy-icon"></button>
+                    </li>
+                    <li class="phone-number">
+                        <a href="tel:+79202006665" class="segment-link link-icon"></a>
+                        <span class="segment-number">
+                            <span class="number">8-920-200-6665</span>
+                            <span class="description">(обращаться по вопросам пожеланий/претензий к монтажникам)</span>
+                        </span>
+                        <button class="segment-link copy-icon"></button>
+                    </li>
+                    <li class="phone-number">
+                        <a href="tel:+79103635551" class="segment-link link-icon"></a>
+                        <span class="segment-number">
+                            <span class="number">8-910-363-5551</span>
+                            <span class="description">(заместитель директора)</span>
+                        </span>
+                        <button class="segment-link copy-icon"></button>
+                    </li>
+                </ul>
+                <ul class="emails">
+                    <li class="email">sonne.mobstyle@gmail.com</li>
+                    <li class="email">sonne_mobstyle@mail.ru</li>
+                </ul>
+            </div>
+            <div class="image-block">
+                <img src="~/img/site/about_phones.png" />
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Breadcrumbs {
+<vc:breadcrumbs breadcrumbs="@breadcrumbs" />
+}
+
+@section Styles {
+<link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+}
+
+
+@section Scripts {
+    <script src="~/js/Customer/home/about.js" asp-append-version="true"></script>
+}

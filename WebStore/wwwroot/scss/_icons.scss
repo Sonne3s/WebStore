@@ -1,0 +1,174 @@
+﻿@mixin bi {
+    &::before {
+        display: inline-block;
+        font-family: icons !important;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -0.125em;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+    }
+}
+
+@mixin bi-tornado {
+    @include bi();
+    &::before {
+        content: "\e900";
+    }
+}
+
+@mixin bi-person-circle {
+    @include bi();
+    &::before {
+        content: "\e904";
+    }
+}
+
+@mixin bi-cart {
+    @include bi();
+    &::before {
+        content: "\e903";
+    }
+}
+
+@mixin bi-box-arrow-up-right {
+    @include bi();
+    &::before {
+        content: "\e907";
+    }
+}
+
+@mixin bi-cart-check {
+    @include bi();
+
+    &::before {
+        content: "\e906";
+    }
+}
+
+@mixin bi-cart-x {
+    @include bi();
+    &::before {
+        content: "\e905";
+    }
+}
+
+@mixin bi-cart-dash {
+    @include bi();
+    &::before {
+        content: "\e902";
+    }
+}
+
+@mixin bi-cart-plus {
+    @include bi();
+    &::before {
+        content: "\e901";
+    }
+}
+
+
+.bi {
+    &::before {
+        display: inline-block;
+        font-family: icons !important;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -0.125em;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+    }
+
+    &.bi-cart-plus {
+        &::before {
+            content: "\e901";
+        }
+    }/////////////////
+
+    &.bi-cart-dash {
+        &::before {
+            content: "\e902";
+        }
+    }///////////////
+
+    &.bi-cart {
+        &::before {
+            content: "\e903";
+        }
+    }////////////////
+
+    &.bi-tools {
+        &::before {
+            content: "\e90a";
+        }
+    }
+
+    &.bi-truck {
+        &::before {
+            content: "\e909";
+        }
+    }
+
+    &.bi-shop {
+        &::before {
+            content: "\e908";
+        }
+    }
+
+    &.bi-at {
+        &::before {
+            content: "\e90d";
+        }
+    }
+
+    &.bi-geo-alt-fill {
+        &::before {
+            content: "\e90c";
+        }
+    }
+
+    &.bi-phone {
+        &::before {
+            content: "\e90b";
+        }
+    }
+
+    &.bi-globe {
+        &::before {
+            content: "\e90e";
+        }
+    }
+
+    &.bi-telephone {
+        &::before {
+            content: "\e910";
+        }
+    }
+
+    &.bi-files {
+        &::before {
+            content: "\e90f";
+        }
+    }
+}
+
+.icon-add-to-cart {
+    @extend .bi;
+    @extend .bi-cart-plus;
+}
+
+.icon-remove-from-cart {
+    @extend .bi;
+    @extend .bi-cart-dash;
+}
+
+.icon-to-cart {
+    @extend .bi;
+    @extend .bi-cart;
+}

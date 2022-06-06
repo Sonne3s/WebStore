@@ -1,0 +1,66 @@
+﻿@import '../_keyframes.scss';
+
+
+@mixin logo-emblem {
+    @include bi();
+    @include bi-tornado();
+}
+
+@mixin logo-emblem-min {
+    @include logo-emblem();
+
+    &::before {
+        color: #223894;
+    }
+}
+
+@mixin logo-emblem-animate {
+    animation: iridescent-gradient 3s ease infinite;
+}
+
+@mixin emblem-style($width, $color) {
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: $width;
+    -webkit-text-stroke-color: $color;
+}
+
+@mixin logo-emblem-loader-emblem {
+    @include logo-emblem-animate();
+    @include emblem-style(0.03em, #223894);
+}
+
+@mixin logo-emblem-loader-text {
+    font-family: 'Ruge Boogie', cursive;
+    color: white;
+    -webkit-text-stroke-width: 0.035em;
+    -webkit-text-stroke-color: #223894;
+    animation: emblem-loader-text-shadow 3s cubic-bezier(.28, .92, 1, .75) alternate infinite;
+}
+
+@mixin logo-large-emblem {
+    @include logo-emblem();
+    @include logo-emblem-animate();
+    @include emblem-style(0.01em, #223894);
+    font-size: 8vmax;
+}
+
+@mixin logo-label-animate {
+    animation: flicker 3s cubic-bezier(.28, .92, 1, .75) alternate infinite;
+}
+
+@mixin label-style($color, $border-width, $border-color) {
+    font-family: 'Ruge Boogie', cursive;
+    color: $color;
+    -webkit-text-stroke-width: $border-width;
+    -webkit-text-stroke-color: $border-color;
+}
+
+@mixin logo-large-label {
+    @include logo-label-animate();
+    @include label-style(black, 0.01em, #223894);
+    font-size: 8vmax;
+}
+
+@include keyframes-iridescent-gradient();
+@include keyframes-flicker($color-fourth);

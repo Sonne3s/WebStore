@@ -1,0 +1,49 @@
+﻿@using WebStore.ViewComponentModels
+@model PropertyDecimalInputViewComponentModel
+
+<div class="form-group mb-1">
+        <div class="card">
+        <div class="card-header">
+            @Model.Label
+            <button type="button" class="btn btn-sm btn-danger @(Model.ShowDeleteButton ? string.Empty : "d-none")" data-action="remove-prop">
+                <i class="bi bi-x-lg"></i>
+                <span class="visually-hidden">Закрыть</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-info d-none" data-bs-toggle="modal" data-action="add-item" disabled>
+                <i class="bi bi-plus-lg"></i>
+            </button>
+        </div>
+        <div class="card-body mb-2">
+            <div class="input-group mb-2">
+                <span class="input-group-text">@Model.UnitValue</span>
+                <input type="number" step="1" class="form-control" id="@Model.IdAttribute" name="@Model.NameAttribute" aria-describedby="@Model.NameAttribute" placeholder="@Model.Placeholder" value="@Model.Values" @(Model.HasDisabled ? "Disabled" : string.Empty) required>
+                <button type="button" class="btn btn-sm btn-danger" data-action="remove-item" disabled>
+                    <i class="bi bi-x-lg"></i>
+                    <span class="visually-hidden">Удалить</span>
+                </button>
+            </div>
+             <div class="input-group mb-2 sample d-none">
+                <span class="input-group-text">@Model.UnitValue</span>
+                <input type="number" step="1" class="form-control" id="@Model.IdAttribute" name="@Model.NameAttribute" aria-describedby="@Model.NameAttribute" placeholder="@Model.Placeholder" value="@Model.Values" @(Model.HasDisabled ? "Disabled" : string.Empty) required>
+                <button type="button" class="btn btn-sm btn-danger" data-action="remove-item">
+                    <i class="bi bi-x-lg"></i>
+                    <span class="visually-hidden">Удалить</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="form-group mb-1">
+    <label for="@Model.NameAttribute">
+        @Model.Label
+        <button type="button" class="btn btn-sm btn-danger @(Model.ShowDeleteButton ? string.Empty : "d-none")" data-action="remove-prop">
+            <i class="bi bi-x-lg"></i>
+            <span class="visually-hidden">Закрыть</span>
+        </button>
+    </label>
+    <div class="input-group my-2">
+        <input type="number" value="@Model.Value" class="form-control" id="@Model.IdAttribute" name="@Model.NameAttribute" step=".01" aria-describedby="@Model.IdAttribute" @(Model.HasDisabled ? "Disabled" : string.Empty) required>
+        <span class="input-group-text">@Model.UnitValue</span>
+    </div>
+</div>*@

@@ -1,0 +1,101 @@
+﻿@using WebStore.ViewModels
+@using static WebStore.ViewModels.AccountDetailsViewModel
+@model AccountDetailsViewModel
+
+<ul class="nav nav-tabs check-out" id="myTab" role="tablist">
+    <li class="nav-item check-out" role="presentation">
+        <button class="nav-link @(Model.ActiveTab == ActiveTabsEnum.Person ? "active" : string.Empty)" id="receiving-tab" data-bs-toggle="tab" data-bs-target="#receiving" type="button" role="tab" aria-controls="receiving" aria-selected="true">Личные данные</button>
+    </li>
+    <li class="nav-item check-out" role="presentation">
+        <button class="nav-link @(Model.ActiveTab == ActiveTabsEnum.Orders ? "active" : string.Empty)" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">Активные заказы</button>
+    </li>
+    <li class="nav-item check-out" role="presentation">
+        <button class="nav-link @(Model.ActiveTab == ActiveTabsEnum.Archive ? "active" : string.Empty)" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Архив заказов</button>
+    </li>
+</ul>
+<div class="tab-content border-top rounded-bottom border-info row" id="myTabContent">
+    <div class="tab-pane my-3 fade col-8 offset-2 @(Model.ActiveTab == ActiveTabsEnum.Person ? "active show" : string.Empty)" id="receiving" role="tabpanel" aria-labelledby="payment-tab">
+        <form asp-action="Edit" asp-controller="Account">
+            <div class="form-group mb-3">
+                <label for="email">Адрес электронной почты</label>
+                <label for="email">: @Model.Email</label>
+                <input type="email" id="email" name="email" class="form-control d-none" value="@Model.Email" placeholder="email@example.com">
+            </div>
+            <div class="form-group mb-3">
+                <label for="lastname">Фамилия</label>
+                <label for="lastname">: @(Model.LastName ?? "(не указано)")</label>
+                <input type="text" id="lastname" name="lastname" class="form-control d-none" value="@Model.LastName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="firstname">Имя</label>
+                <label for="firstname">: @(Model.FirstName ?? "(не указано)")</label>
+                <input type="text" id="firstname" name="firstname" class="form-control d-none" value="@Model.FirstName">
+            </div>
+            <div class="form-group mb-3">
+                <label for="middlename">Отчество</label>
+                <label for="middlename">: @(Model.MiddleName ?? "(не указано)")</label>
+                <input type="text" id="middlename" name="middlename" class="form-control d-none" value="@Model.MiddleName">
+            </div>
+            <div class="form-group mb-3 dropup">
+                <label for="address">Адрес</label>
+                <label for="address">: @(Model.Address ?? "(не указано)")</label>
+                <input type="text" id="address" name="address" placeholder="начните вводить адрес, чтобы система начала поиск корректного адреса" class="form-control dropdown-toggle d-none" value="@Model.Address" data-action="dadata" data-bs-toggle="dropdown" data-bs-auto-close="true">
+                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                    <li class="dropdown-item d-none sample"></li>
+                </ul>
+            </div>
+            <div class="form-group mb-3">
+                <label for="phone">Номер телефона</label>
+                <label for="phone">: @Model.Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-control d-none" value="@Model.Phone" placeholder="например: 9998887766" pattern="^(7|8|0)?(\d{3})(\d{3})(\d{4})$" title="ожидаемый формат ввода номера: +79998887766 или 9998887766 или 89998887766 или +7(999) 888-7766">
+            </div>
+            <div class="form-group mb-3">
+                <label for="company">Компания</label>
+                <label for="company">: @Model.Company</label>
+                <input type="text" id="company" name="company" class="form-control d-none" value="@Model.Company">
+            </div>
+            <button type="submit" class="btn bg-camel text-white d-grid gap-2 col-6 mx-auto">Применить</button>
+        </form>
+    </div>
+    <div class="tab-pane my-3 fade col-8 offset-2 @(Model.ActiveTab == ActiveTabsEnum.Orders ? "active show" : string.Empty)" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+        <table class="table">
+             <thead class="table-light">
+                <tr>
+                    <th>Идентификатор</th>
+                    <th>Общая сумма</th>
+                    <th>Статус</th>
+                </tr>
+             </thead>
+            @foreach(var order in @Model.ActiveOrders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Total</td>
+                    <td>@order.Status</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="tab-pane my-3 fade col-8 offset-2 @(Model.ActiveTab == ActiveTabsEnum.Archive ? "active show" : string.Empty)" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>Идентификатор</th>
+                    <th>Общая сумма</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            @foreach (var order in @Model.ArchiveOrders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Total</td>
+                    <td>@order.Status</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+
+<script src="~/js/DaData.js" asp-append-version="true"></script>

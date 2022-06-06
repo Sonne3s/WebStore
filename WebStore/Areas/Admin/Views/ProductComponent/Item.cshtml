@@ -1,0 +1,22 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductComponent
+@using WebStore.HtmlHelpers.Admin.Components
+
+@model ItemViewModel
+@{
+    var activeClass = Model.IsActive ? "active" : string.Empty;
+    var checkedAttribute = Model.IsActive ? "checked" : string.Empty;
+
+    var componentItemAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentItem);
+    var dataBsTargetAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Target, Model.Index.ToString());
+}
+
+<div class="component-input input-group my-2" @Html.Raw(componentItemAttribute)>
+    <div class="input-group-text">
+      <input type="radio" class="form-check-input mt-0 @(activeClass)" name="component" role="tab" @Html.Raw(dataBsTargetAttribute) @(checkedAttribute)>
+    </div>
+    <input type="text" class="form-control" value="@Model.Name">
+    <button type="button" class="btn btn-sm btn-outline-danger" data-action="remove-component">
+        <i class="bi bi-x-lg"></i>
+        <span class="visually-hidden">Закрыть</span>
+    </button>
+</div>

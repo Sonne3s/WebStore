@@ -1,0 +1,39 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model List<PropertiesPageViewModel>
+
+    <div class="product-properties-container">
+        @if (Model != null && Model.Count() > 1)
+        {
+            <div class="product-properties-components-buttons" aria-label="Базовая группа переключателей радио">
+                @foreach (var page in Model)
+                {
+                    <input type="radio" class="product-properties-component-radio" name="characteristics" id="characteristic@(page.Id)" autocomplete="off" data-bs-target="#characteristicTable" data-bs-slide-to="@(page.Id)">
+                    <label class="primary button component" for="characteristic@(page.Id)">@(page.Name)</label>
+                }
+            </div>
+        }
+        <div id="characteristicTable" class="product-properties-components-slider carousel slide">
+            @foreach (var page in Model)
+            {
+                <div class="product-properties-component carousel-item @(page.Id == 0 ? "active" : string.Empty)">
+                    <table class="product-properties-table">
+                        <tbody>
+                            @foreach (var prop in page.Properties)
+                            {
+                                <tr class="product-property">
+                                    <th class="product-property-name" scope="row">
+                                        @prop.Name
+                                        <vc:extract-info value="@prop.Description" />
+                                    </th>
+                                    <td class="product-property-value">
+                                        <vc:extract-value property="@prop" />
+                                        <vc:extract-info value="@prop.ValueDescription" />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>

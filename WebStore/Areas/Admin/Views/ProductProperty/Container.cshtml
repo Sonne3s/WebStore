@@ -1,0 +1,35 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.HtmlHelpers.Admin.Components
+@model ContainerViewModel
+@{
+    var formId = Constants.Admin.Edit.FormId;
+    var attributes = Html.GetComponentAttributes(Model.Index);
+    var activeClasses = Model.IsActive ? "show active" : string.Empty;
+    var containerId = $"tab-component{Model.Index}";
+    var inputName = attributes.Name;
+    var inputId = attributes.Name;
+    var purposeAttribute = attributes.PurposeAttribute;
+    var dataActionAttribute = "data-action=get-partial";
+    var dataValAttribute = $"data-val={Url.Action("PropertyChoise", "ProductProperty", new { ComponentId = Model.Index })}";
+    var dataIdAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Id, Model.Index.ToString());
+    var componentPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentPropertiesContainer);
+    var dataAttributes = string.Join(" ", dataIdAttribute, componentPurposeAttribute);
+
+    var propertiesPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.PropertiesContainer);
+}
+
+<div @Html.Raw(dataAttributes) role="tabpanel">
+    <input type="hidden" form="@formId" name=@inputName id=@inputId value="@(Model.Name)" />
+    <div @Html.Raw(propertiesPurposeAttribute)>
+        @if(Model.Properties != null)
+        {
+            @foreach (var prop in Model.Properties)
+            {
+                <partial name="../ProductProperty/Input" model="prop" />
+            }
+        }
+    </div>
+    <div class="form-group mb-1" @Html.Raw(purposeAttribute)>
+        <partial name="../ProductProperty/AddButton" model="@Model.Button" />
+    </div>
+</div>

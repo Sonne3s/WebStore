@@ -1,0 +1,257 @@
+﻿@mixin footer-button() {
+    border: solid gray 1px;
+    padding: 2px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+@mixin hovered-icons-label-container() {
+    &:hover {
+        p.active span {
+            display: none;
+        }
+    }
+
+    p {
+        span {
+            display: none;
+        }
+
+        &:hover span {
+            display: initial!important;
+        }
+    }
+
+    p.active span{
+        display: initial;
+    }
+}
+
+.page-footer {
+    display: flex;
+    height: $footer-height;
+    overflow: hidden;
+    width: 100%;
+    border-top: 1px solid #dee2e6;
+    position: fixed;
+    bottom: 0;
+
+    @mixin section() {
+        display: inline-block;
+        border-right: solid LightBlue 1px;
+        padding-left: 20px;
+        padding-right: 20px;
+        color: #6c757d;
+        /*        &::after {
+            content: ' ';
+            display: block;
+            float: right;
+            background-color: LightBlue;
+            //margin: -20px -10px;
+            height: 20px;
+            width: 1px;
+        }*/
+
+        a {
+            text-decoration: none !important;
+        }
+    }
+
+    .section-label {
+        @include section();
+        flex: 0 0 auto;
+
+        .segment-link {
+            @include footer-button();
+            min-width: 160px;
+
+            .link-icon {
+                @extend .bi;
+                @extend .bi-shop;
+                font-size: 22px;
+            }
+        }
+    }
+
+    .section-phone-numbers {
+        @include section();
+        max-width: 16.66666667%;
+
+        .phone-numbers {
+            @include hovered-icons-label-container();
+            display: flex;
+            justify-content: start;
+            flex: 0 0 auto;
+            min-width: 214px;
+
+            .phone-number {
+                .segment-link {
+                    @include footer-button();
+
+                    .link-icon {
+                        @extend .bi;
+                        @extend .bi-phone;
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .section-emails {
+        @include section();
+        max-width: 16.66666667%;
+
+        .emails {
+            justify-content: start;
+            flex: 0 0 auto;
+            @include hovered-icons-label-container();
+            display: flex;
+            min-width: 214px;
+
+            .email {
+                .segment-link {
+                    @include footer-button();
+
+                    .link-icon {
+                        @extend .bi;
+                        @extend .bi-at;
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .section-social-networks {
+        @include section();
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: start;
+
+        a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .social-network-icon {
+            @include footer-button();
+            @extend .social-networks;
+            font-size: 22px;
+        }
+
+        .vkontakte {
+            @extend .social-network-icon;
+            @extend .social-icon-vkontakte;
+        }
+
+        .telegram {
+            @extend .social-network-icon;
+            @extend .social-icon-telegram;
+        }
+
+        .viber {
+            @extend .social-network-icon;
+            @extend .social-icon-viber;
+        }
+
+        .whatsapp {
+            @extend .social-network-icon;
+            @extend .social-icon-whatsapp;
+        }
+
+        .youtube {
+            @extend .social-network-icon;
+            @extend .social-icon-youtube;
+        }
+    }
+
+    .section-map {
+        @include section();
+        border-right: none !important;
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+
+        .link-icon {
+            @extend .bi;
+            @extend .bi-geo-alt-fill;
+
+            &::before {
+                vertical-align: 10px !important;
+            }
+        }
+
+        a {
+            @include footer-button();
+            text-decoration: none;
+            display: inline-block;
+            font-size: 22px;
+        }
+
+        .map-page {
+            height: 27px;
+            overflow: hidden;
+            vertical-align: -7px;
+        }
+
+        .map-yandex {
+            @extend .social-networks;
+            @extend .social-icon-yandex-maps;
+        }
+
+        .map-google {
+            @extend .social-networks;
+            @extend .social-icon-google-maps;
+        }
+    }
+
+    .section-creator {
+        @include section();
+        border-left: solid LightBlue 1px;
+        flex: 0 0 auto;
+
+        .creator-container {
+            min-width: 303px;
+
+            & * {
+                display: inline-block;
+            }
+
+            a {
+                @include footer-button();
+                text-decoration: none;
+                display: inline-block;
+                font-size: 22px;
+                height: 27px;
+                overflow: hidden;
+                vertical-align: -7px;
+            }
+
+            .link-icon {
+                @extend .bi;
+                @extend .bi-globe;
+
+                &::before {
+                    vertical-align: 10px;
+                }
+            }
+
+            .vkontakte {
+                @extend .social-networks;
+                @extend .social-icon-vkontakte;
+            }
+
+            .telegram {
+                @extend .social-networks;
+                @extend .social-icon-telegram;
+            }
+
+            .youtube {
+                @extend .social-networks;
+                @extend .social-icon-youtube;
+            }
+        }
+    }
+}

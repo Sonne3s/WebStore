@@ -1,0 +1,31 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@using WebStore.Extensions
+@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+@model CartDetailsItemViewModel
+@{
+    var addToCartUrl = Url.Action("CartDetailsAddToCart", new { Area = "Customer", ProductId = Model.ProductId });
+    var removeFromCartUrl = Url.Action("CartDetailsRemoveFromCart", new { Area = "Customer", ProductId = Model.ProductId });
+    var detailsLink = Url.Action("Details", "Product", new { Area = "Customer", Id = Model.ProductId });
+}
+<div class="cart-item-container">
+    <div class="cart-item">
+        <div class="image-container">
+            <img src="\@(Model.ImageUrl)" />
+            <a href="@detailsLink" class="stretched-link"></a>
+        </div>
+        <div class="title-container">
+            <h5 class="_title">@(Model.Name)</h5>
+        </div>
+        <div class="cart-buying-control-section">
+            <div class="section-input-group">
+                <a href="@removeFromCartUrl" class="remove-button"><i class="_icon"></i></a>
+                <input type="text" class="total-price" value="@(Model.Total.ToMoney())" disabled>
+                <a href="@addToCartUrl" class="add-button">
+                    <i class="_icon"></i>
+                    <span class="cart-items-badge">@(Model.Count)</span>
+                </a>
+            </div>                
+        </div>
+    </div>
+</div>

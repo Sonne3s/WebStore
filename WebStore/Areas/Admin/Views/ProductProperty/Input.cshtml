@@ -1,0 +1,18 @@
+﻿@using WebStore.Areas.Admin.ViewModels
+@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.Models.Enumerations
+@model InputViewModel
+
+@switch (Model.Property.Type)
+{
+    case PropertyTypeEnumeration.Text:
+        <partial name="../ProductProperty/Input/Text" model="Model"/>
+        break;
+    case PropertyTypeEnumeration.Integer:
+        <partial name="../ProductProperty/Input/Integer" model="Model"/>
+        break;
+    case PropertyTypeEnumeration.Decimal:
+        <partial name="../ProductProperty/Input/Decimal" model="Model"/>
+        break;
+    default: throw new Exception("unknown value type");
+}

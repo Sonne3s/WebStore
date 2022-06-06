@@ -1,0 +1,34 @@
+﻿@using WebStore.ViewComponentModels
+@using WebStore.HtmlHelpers
+ @model PropertyTextInputViewComponentModel
+
+<div class="form-group mb-1">
+    <div class="card">
+        <div class="card-header">
+            @Model.Label
+            <button type="button" class="btn btn-sm btn-danger @(Model.ShowDeleteButton ? string.Empty : "d-none")" data-action="remove-prop">
+                <i class="bi bi-x-lg"></i>
+                <span class="visually-hidden">Закрыть</span>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-info d-none" data-bs-toggle="modal" data-action="add-item" disabled>
+                <i class="bi bi-plus-lg"></i>
+            </button>
+        </div>
+        <div class="card-body mb-2">
+            <div class="input-group mb-2">
+                <input type="text" form="@Constants.Admin.Edit.FormId" class="form-control" id="@Model.IdAttribute" name="@Model.NameAttribute" aria-describedby="@Model.NameAttribute" placeholder="@Model.Placeholder" value="@Model.Values" @(Model.HasDisabled ? "Disabled" : string.Empty) required>
+                <button type="button" class="btn btn-sm btn-danger" data-action="remove-item" disabled>
+                    <i class="bi bi-x-lg"></i>
+                    <span class="visually-hidden">Удалить</span>
+                </button>
+            </div>
+             <div class="input-group mb-2 sample d-none">
+                <input type="text" class="form-control" id="@Model.IdAttribute" name="@Model.NameAttribute" aria-describedby="@Model.NameAttribute" placeholder="@Model.Placeholder" value="@Model.Values" @(Model.HasDisabled ? "Disabled" : string.Empty) required>
+                <button type="button" class="btn btn-sm btn-danger" data-action="remove-item">
+                    <i class="bi bi-x-lg"></i>
+                    <span class="visually-hidden">Удалить</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

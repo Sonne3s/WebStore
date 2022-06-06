@@ -1,0 +1,21 @@
+﻿.page-cartbar {
+    display: inline-block;
+    vertical-align: top;
+
+    .cartbar-button {
+        @include button();
+        background-color: #b4f0fc;
+        color: #0dcaf0;
+        border-color: #0dcaf0;
+        position: relative;
+
+        .icon {
+            @include bi-cart();
+            color: white;
+        }
+
+        .quantity-goods-in-cart {
+            @include badge();
+        }
+    }
+}

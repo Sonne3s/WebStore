@@ -1,0 +1,34 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.HtmlHelpers.Admin.Components
+@model AddButtonViewModel
+
+@{
+    var linkDataIdAttribute = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Id, Model.ComponentIndex.ToString());
+    var typeSelectionPurpose = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.TypeSelection);
+    var formAjaxAttributes = new Ajax.Unobtrusive() 
+    { 
+        Mode = Ajax.Unobtrusive.ModeValue.Replace, 
+        Update = String.Join(" ", linkDataIdAttribute, typeSelectionPurpose)        
+    };
+    var formUrl = @Url.Action("TypeSelection", "ProductProperty");
+    var propertiesPurposeAttribute = DataAttributes.InsertAttributeSelector(
+        DataAttributes.AttributeName.Purpose, DataPurposes.PropertiesContainer);
+    var linkAjaxAttributes = new Ajax.Unobtrusive() {
+        Mode = Ajax.Unobtrusive.ModeValue.After, 
+        Update = String.Join(" ", linkDataIdAttribute, propertiesPurposeAttribute), 
+        Success = "ApplyInputEvents"};
+    var linkUrl = @Url.Action(
+        "Input", 
+        "ProductProperty", 
+        new { ComponentIndex = Model.ComponentIndex, PropertyIndex = Model.PropertyIndex - 1, GroupId = Model.GroupId });
+    var linkPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.AddPropertyInputLink);
+    linkDataIdAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Id, Model.ComponentIndex.ToString());
+}
+<!form action="@formUrl" @Html.Raw(formAjaxAttributes)>
+    <input type="hidden" name="ComponentIndex" value="@Model.ComponentIndex"/>
+    <input type="hidden" name="PropertyIndex" value="@Model.PropertyIndex"/>
+    <button type="submit" class="btn btn-outline-info w-100">
+        Добавить параметр
+    </button>
+</!form>
+<a href="@linkUrl" class="d-none" @Html.Raw(linkAjaxAttributes) @Html.Raw(linkDataIdAttribute) @Html.Raw(linkPurposeAttribute)></a>

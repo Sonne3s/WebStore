@@ -1,0 +1,30 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@model CheckOutPersonalDataViewModel
+
+<div class="personal-data">
+    <div class="personal-input-block">
+        <label for="fullname" class="personal-input-label">ФИО</label>
+        <div class="personal-input-container">
+            <input type="text" id="fullname" name="fullname" value="@Model.FullName">
+        </div>
+    </div>
+    <div class="personal-input-block">
+        <label for="company" class="personal-input-label">Компания</label>
+        <div class="personal-input-container">
+            <input type="text" id="company" name="company" value="@Model.Company">
+        </div>
+    </div>
+    <div class="personal-input-block">
+        <label for="phone" class="personal-input-label">Телефон</label>
+        <div class="personal-input-container">
+            <input type="text" id="phone" name="phone" value="@Model.Phone">
+        </div>
+    </div>
+    <div class="personal-input-block">
+        <label for="email" class="personal-input-label">Email</label>
+        <div class="personal-input-container">
+            <input type="text" id="email" name="email" value="@Model.Email">
+        </div>
+    </div>
+    <button type="button" class="personal-data-button-next">Перейти на следующий шаг</button>
+</div>

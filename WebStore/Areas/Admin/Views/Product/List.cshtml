@@ -1,0 +1,42 @@
+﻿@using WebStore.Areas.Admin.ViewModels
+@model AdminProductListViewModel;
+@{
+    Layout = "_Layout";
+}
+<dib>
+    <form asp-action="ImportProducts" asp-controller="DataMigration" asp-area="Admin" enctype="multipart/form-data" method="post">
+         <a asp-action="ClearDb" asp-controller="Product" class="btn-danger btn mb-2 d-none">Очистить базу данных</a>
+        <div class="input-group">
+            <a asp-action="Edit" class="btn-primary btn">Добавить</a>
+            <a asp-action="ExportProducts" asp-controller="DataMigration" class="btn-primary btn">Экспортировать</a>
+            <input type="file" class="form-control" id="file" name="file" aria-describedby="fileBtn" aria-label="Upload">
+            <button class="btn btn-primary" type="submit" id="fileBtn">Импортировать</button>
+        </div>
+    </form>
+</dib>
+<table class="table">
+    @foreach(var item in Model.Products)
+    {
+        <tr class="position-relative">
+            <td>
+                <a asp-action="Edit" asp-route-id="@(item.Id)" class="text-decoration-none text-reset">@item.Id</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@(item.Id)" class="text-decoration-none text-reset">@item.Name</a>                
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@(item.Id)" class="text-decoration-none text-reset">@item.Description</a>                
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@(item.Id)" class="text-decoration-none text-reset">@item.Price</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-productId="@item.Id" class="btn btn-danger">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/admin/product/list.min.css" asp-append-version="true" />
+}

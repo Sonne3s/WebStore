@@ -1,0 +1,18 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Models.Enumerations
+@model ProductListFilterProducerViewModel
+
+<div class="filter-item">
+    <label class="filter-item-header">Производитель</label>
+    <div class="filter-item-body text">
+        @foreach (var item in Model.Values)
+        {
+            <div class="item">
+                <input type="checkbox" value="@item.Id" name="Producer" id="Producer[@Model.Values.IndexOf(item)]">
+                <label for="Producer[@Model.Values.IndexOf(item)]">
+                    @item.Value
+                </label>
+            </div>
+        }
+    </div>
+</div>

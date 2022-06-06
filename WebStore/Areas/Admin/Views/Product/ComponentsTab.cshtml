@@ -1,0 +1,30 @@
+﻿@using WebStore.Areas.Admin.ViewModels.Components
+@model ComponentsTabViewModel
+@{
+    var componentsContainerAttribute = 
+            DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsPropertiesContainer);
+
+    var propertiesContainer = 
+            DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsContainer);
+}
+
+<div class="row tab-form border-info" id="ComponentsTab">
+    <div class="col-3 nav d-inline" @Html.Raw(propertiesContainer)>
+        <partial name="../ProductComponent/Container" model="Model?.ComponentContainer"/>
+    </div>
+    <div class="col-9 tab-content" @Html.Raw(componentsContainerAttribute)>
+        @if (Model != null)
+        {
+            @foreach (var container in Model.PropertyContainers)
+            {
+@*                <partial name="ComponentPropertiesContainer" model="component" />
+*@                <partial name="../ProductProperty/Container" model="container" />
+            }
+        }
+        <div class="tab-pane sample fade" role="tabpanel" role="tabpanel" aria-labelledby="receiving-method-2-tab">
+            <input type="hidden" name="component" />
+            <button type="button" class="btn btn-outline-info w-100" data-action="get-partial" data-val="@Url.Action("PropertyChoise", "ProductProperty")">Добавить параметр</button>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-outline-primary w-100" data-next-tab="#images-tab" data-action="next">Далее</button>

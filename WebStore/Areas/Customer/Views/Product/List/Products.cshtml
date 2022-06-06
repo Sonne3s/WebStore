@@ -1,0 +1,11 @@
+﻿@using WebStore.Areas.Customer.ViewModels
+@using WebStore.Areas.Customer.ViewModels.Product
+@model (List<ProductListItemViewModel> Items, List<PaginationItemViewModel> Pages);
+
+<div class="products">
+    @foreach (ProductListItemViewModel item in Model.Items)
+    {
+        <partial name="List\Item", model=item /> 
+    }
+</div>
+<partial name="List\Pagination" model=Model.Pages />

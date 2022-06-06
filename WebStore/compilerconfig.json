@@ -1,0 +1,50 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/main.css",
+    "inputFile": "wwwroot/css/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/about.css",
+    "inputFile": "wwwroot/scss/about.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/account/auth/registration.css",
+    "inputFile": "wwwroot/scss/account/auth/registration.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/account/purchase/list.css",
+    "inputFile": "wwwroot/scss/account/purchase/list.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/account/user/details.css",
+    "inputFile": "wwwroot/scss/account/user/details.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/customer/home/index.css",
+    "inputFile": "wwwroot/scss/customer/home/index.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/customer/buying/cart-details.css",
+    "inputFile": "wwwroot/scss/customer/buying/cart-details.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/customer/buying/check-out.css",
+    "inputFile": "wwwroot/scss/customer/buying/check-out.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/customer/product/list.css",
+    "inputFile": "wwwroot/scss/customer/product/list.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/customer/product/details.css",
+    "inputFile": "wwwroot/scss/customer/product/details.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/admin/product/list.css",
+    "inputFile": "wwwroot/scss/admin/product/list.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/admin/product/edit.css",
+    "inputFile": "wwwroot/scss/admin/product/edit.scss"
+  }
+]

@@ -1,0 +1,228 @@
+﻿@import '../../customer/_layout.scss';
+
+.check-out {
+    .check-out-form {
+        @extend .border-info;
+        border-style: solid;
+        border-width: 0px;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+        .check-out-tab-head {
+            @extend .nav;
+            @extend .nav-tabs;
+            margin-left: 15%;
+
+            .check-out-tab-item {
+                @extend .nav-item;
+                position: relative;
+                bottom: -1px;
+
+                .tab-item-button {
+                    @extend .nav-link;
+                }
+            }
+        }
+
+        .check-out-tab-body {
+            @extend .tab-content;
+            @extend .border-top;
+            @extend .rounded-bottom;
+            @extend .border-info;
+            @extend .row;
+
+            .check-out-tab-item {
+                @extend .tab-pane;
+                @extend .my-3;
+                @extend .fade;
+                @extend .col-8;
+                @extend .offset-2;
+
+                .personal-data {
+                    @extend .rounded;
+                    @extend .border-info;
+                    @extend .border;
+                    @extend .p-3;
+
+                    .personal-input-block {
+                        @extend .row;
+                        @extend .mb-3;
+
+                        .personal-input-label {
+                            @extend .col-sm-2;
+                            @extend .form-label;
+                        }
+
+                        .personal-input-container {
+                            @extend .col-sm-10;
+
+                            input {
+                                @extend .form-control;
+                            }
+                        }
+                    }
+
+                    .personal-data-button-next {
+                        @extend .button;
+                        @extend .secondary;
+                        @extend .d-grid;
+                        @extend .gap-2;
+                        @extend .col-6;
+                        @extend .mx-auto;
+                    }
+                }
+
+                .receiving-data {
+                    @extend .row;
+                    @extend .border-info;
+                    @extend .nav;
+                    @extend .nav-tabs;
+                    @extend .rounded;
+                    @extend .border;
+
+                    .receiving-data-tab-head {
+                        @extend .btn-group;
+                        @extend .w-100;
+                        @extend .my-3;
+                        @extend .mx-1;
+                        @extend .row;
+
+                        .tab-head-item {
+                            @extend .col-4;
+
+                            .installation-icon {
+                                @extend .bi;
+                                @extend .bi-tools;
+                            }
+
+                            .delivery-icon {
+                                @extend .bi;
+                                @extend .bi-truck;
+                            }
+
+                            .pickup-icon {
+                                @extend .bi;
+                                @extend .bi-shop;
+                            }
+
+                            .item-header {
+                                @extend .dropdown-header;
+                            }
+
+                            .item-input {
+                                @extend .btn-check;
+                            }
+
+                            .item-label {
+                                @extend .button;
+                                @extend .w-100;
+                                font-size: 4em;
+                            }
+                        }
+                    }
+
+                    .receiving-data-tab-body {
+                        @extend .col-12;
+                        @extend .tab-content;
+
+                        .delivery-data {
+                            @extend .tab-body-item;
+
+                            .delivery-input-block {
+                                @extend .row;
+                                @extend .mb-3;
+
+                                .input-label {
+                                    @extend .col-sm-2;
+                                    @extend .form-label;
+                                }
+
+                                .input-container {
+                                    @extend .col-sm-10;
+
+                                    input {
+                                        @extend .form-control;
+                                    }
+
+                                    .hint {
+                                        @extend .form-text;
+                                        @extend .text-muted;
+                                    }
+                                }
+
+                                .area-container {
+                                    @extend .col-sm-12;
+
+                                    textarea {
+                                        @extend .form-control;
+                                    }
+                                }
+                            }
+                        }
+
+                        .installation-data {
+                            @extend .tab-body-item;
+
+                            .installation-input-block {
+                                @extend .row;
+                                @extend .mb-3;
+
+                                .input-label {
+                                    @extend .col-sm-2;
+                                    @extend .form-label;
+                                }
+
+                                .input-container {
+                                    @extend .col-sm-10;
+
+                                    input {
+                                        @extend .form-control;
+                                    }
+
+                                    .hint {
+                                        @extend .form-text;
+                                        @extend .text-muted;
+                                    }
+                                }
+
+                                .area-container {
+                                    @extend .col-sm-12;
+
+                                    textarea {
+                                        @extend .form-control;
+                                    }
+                                }
+                            }
+                        }
+
+                        .pickup-data {
+                            @extend .tab-body-item;
+
+                            .pickup-input-block {
+                            }
+                        }
+
+                        .tab-body-item {
+                            @extend .tab-pane;
+                            @extend .fade;
+                        }
+
+                        .receiving-data-button-submit {
+                            @extend .button;
+                            @extend .secondary;
+                            @extend .d-grid;
+                            @extend .gap-2;
+                            @extend .col-6;
+                            @extend .mx-auto;
+                            @extend .mb-2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

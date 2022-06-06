@@ -1,0 +1,34 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Buying
+@model (CheckOutDeliveryDataViewModel Installation, CheckOutDeliveryDataViewModel Delivery)
+
+<div class="receiving-data nav">
+        <div class="receiving-data-tab-head" role="tablist">
+            <div class="tab-head-item">
+                <h5 class="item-header">Монтаж</h5>
+                <input type="radio" class="item-input" name="DeliveryType" id="DeliveryTypeInstallation" autocomplete="off" data-bs-toggle="tab" data-bs-target="#receiving-method-1" role="tab" checked>
+                <label class="item-label" for="DeliveryTypeInstallation"><i class="installation-icon"></i></label>
+            </div>
+            <div class="tab-head-item">
+                <h5 class="item-header">Доставка</h5>
+                <input type="radio" class="item-input" name="DeliveryType" id="DeliveryTypeDelivery" autocomplete="off" data-bs-toggle="tab" data-bs-target="#receiving-method-2" role="tab">
+                <label class="item-label" for="DeliveryTypeDelivery"><i class="delivery-icon"></i></label>
+            </div>
+            <div class="tab-head-item">
+                <h5 class="item-header">Самовывоз</h5>
+                <input type="radio" class="item-input" name="DeliveryType" id="DeliveryTypePickup" autocomplete="off" data-bs-toggle="tab" data-bs-target="#receiving-method-3" role="tab">
+                <label class="item-label" for="DeliveryTypePickup"><i class="pickup-icon"></i></label>
+            </div>
+        </div>
+        <div class="receiving-data-tab-body" id="receiving-method-tabContent">
+            <div class="installation-data fade show active" id="receiving-method-1" role="tabpanel">
+                <partial name="CheckOut/ReceivingData/InstallationData", model=Model.Installation />
+            </div>
+            <div class="delivery-data fade" id="receiving-method-2" role="tabpanel">
+                <partial name="CheckOut/ReceivingData/DeliveryData", model=Model.Delivery />
+            </div>
+            <div class="pickup-data fade" id="receiving-method-3" role="tabpanel">
+                <partial name="CheckOut/ReceivingData/PickupData" />
+            </div>
+            <button type="submit" class="receiving-data-button-submit">Перейти к оплате</button>
+        </div>
+</div>

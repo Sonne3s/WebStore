@@ -1,0 +1,43 @@
+﻿@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+@{
+    var cartOffCanvasPurpose = DataAttributes.InsertAttribute(
+                    DataAttributes.AttributeName.Purpose, Customer.DataPurposes.CartOffCanvas);
+}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - web_store</title>
+        @await RenderSectionAsync("Styles", required: false)
+    </head>
+    <body>
+        <header class="page-header"> 
+            <div class="left-side">
+                @*<vc:navbar />*@ 
+                <partial name="_Navbar"/>
+                @await RenderSectionAsync("Breadcrumbs", required: false)
+            </div>
+            <div class="right-side">
+                <h1 class="logo-big">Cool Life</h1>
+                <vc:userbar />
+                <vc:cartbar />
+            </div>
+        </header>
+        <div class="page-body">            
+            <main role="main">
+            @RenderBody()
+            </main>
+        </div>
+        <footer class="page-footer">
+            <partial name="Footer" />
+        </footer>    
+        <div @Html.Raw(cartOffCanvasPurpose) class="cart-off-canvas" tabindex="-1" id="offcanvasExample">
+            <vc:cart-off-canvas />
+        </div>
+    </body>
+    @await RenderSectionAsync("Constants", required: false)
+    <partial name="Scripts" />
+    @await RenderSectionAsync("Scripts", required: false)
+</html>

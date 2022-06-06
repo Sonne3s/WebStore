@@ -1,0 +1,111 @@
+﻿@using WebStore.HtmlHelpers
+@using WebStore.ViewComponentModels
+@using static WebStore.ViewModels.AccountDetailsViewModel
+@using Customer = WebStore.HtmlHelpers.Customer
+@model NavbarViewComponentModel
+@{
+    var reloadQuantityGoodsInCartUrl = Url.Action("QuantityGoodsInCart", "Buying");
+    var reloadQuantityGoodsInCartAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Update = DataAttributes.InsertAttributeSelector(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCart)
+    };
+    var reloadQuantityGoodsInCartPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCartReloadLink);
+    var quantityGoodsInCartPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.NavbarQuantityGoodsInCart);
+}
+<a href="@reloadQuantityGoodsInCartUrl" @Html.Raw(reloadQuantityGoodsInCartAjaxAttributes) @Html.Raw(reloadQuantityGoodsInCartPurpose) class="d-none"></a>
+
+<nav class="page-navbar navbar-toggleable-sm box-shadow">
+    <div class="navbar-container">
+        <div class="small-size-logo-container">
+            <a class="logo-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="logo-icon"></i>CL</a>
+        </div>
+        <div class="small-size-buttons-container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                <span class="iconify" data-icon="bi:cart" data-width="32" data-height="32"></span>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".categories-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="iconify" data-icon="bi:card-checklist" data-width="32" data-height="32"></span>
+            </button>
+        </div>
+        <div class="full-size-container">
+            <ul class="base-links">
+                <li class="logo-link">
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><i class="link-icon"></i>CL</a>
+                </li>
+                <li class="product-list-link">
+                    <a asp-area="Customer" asp-controller="Product" asp-action="List">Каталог товаров</a>
+                </li>
+                <li class="home-about-link">
+                    <a asp-controller="Home" asp-action="About">О нас</a>
+                </li>
+            </ul>
+            <div class="btn-group dropstart">
+                <button class="btn btn-outline-info position-relative dropdown-toggle mx-2" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                    <i class="bi bi-person-circle text-white"></i>
+                    <span class="visually-hidden">управление аккаунтом</span>
+                </button>
+                <div class="dropdown-menu border border-info">
+                    @if (Model.User == null || Model.User.IsAnonimous)
+                    {
+                        <h4 class="dropdown-header">Вход в аккаунт</h4>
+                        <div class="dropdown-divider"></div>
+                        <form asp-action="LogIn" asp-controller="Auth" asp-area="Account" class="px-4 py-3">
+                            <div class="mb-3">
+                                <label for="emailInput" class="form-label">Адрес эл.почты</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="email@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passwordInput" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                    <label class="form-check-label" for="remember">
+                                        Запомнить
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Войти</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a asp-action="Registration" asp-controller="Auth" asp-area="Account" class="dropdown-item">Регистрация</a>
+                        <a class="dropdown-item" href="#">Восстановить пароль</a>
+                    }
+                    else
+                    {
+                        <h4 class="dropdown-header">@Model.User.Login</h4>
+                        <div class="dropdown-divider"></div>
+                        <a asp-action="Details" asp-controller="User" asp-area="Account" asp-route-tab="@ActiveTabsEnum.Person" class="dropdown-item">Личные данные</a>
+                        <a asp-action="List" asp-controller="Purchase" asp-area="Account" class="dropdown-item">Заказы</a>
+                        if(Model.UserHelper.IsAdministrator(Model.User)) 
+                        {
+                            <div class="dropdown-divider"></div>
+                            <h4 class="dropdown-header">Администратор</h4>
+                            <a asp-action="List" asp-controller="Product" asp-area="Admin" class="dropdown-item">Настроить каталог</a>
+                        }
+                        <div class="dropdown-divider"></div>
+                        <div class="px-4 py-3">
+                            <a asp-action="LogOut" asp-controller="Auth" asp-area="Account" class="btn btn-primarybtn btn-primary">Выйти</a>
+                        </div>
+                    }
+                </div>
+            </div>
+            <button class="btn btn-outline-info position-relative" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                <i class="bi bi-cart text-white"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" @Html.Raw(quantityGoodsInCartPurpose)>
+                    @(Model.CartItemsCount)
+                </span>
+                <span class="visually-hidden">экземпляров в корзине</span>
+            </button>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,67 @@
+﻿@using WebStore.Areas.Account.ViewModels
+@model PurchaseListViewModel
+@{
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Заказы", "#", true)
+    };
+}
+
+<ul class="purchase-tab-header" id="myTab" role="tablist">
+    <li class="tab-item" role="presentation">
+        <button class="tab-button active" id="active-tab" data-bs-toggle="tab" data-bs-target="#active" type="button" role="tab">Активные заказы</button>
+    </li>
+    <li class="tab-item" role="presentation">
+        <button class="tab-button" id="archive-tab" data-bs-toggle="tab" data-bs-target="#archive" type="button" role="tab">Архив заказов</button>
+    </li>
+</ul>
+<div class="purchase-tab-body" id="myTabContent">
+    <div class="active-tab active show" id="active" role="tabpanel">
+        <table class="purchase-table">
+             <thead class="thead">
+                <tr>
+                    <th>Идентификатор</th>
+                    <th>Общая сумма</th>
+                    <th>Статус</th>
+                </tr>
+             </thead>
+            @foreach(var order in @Model.ActivePurchaseList)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Total</td>
+                    <td>@order.Status</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="archive-tab" id="archive" role="tabpanel">
+        <table class="purchase-table">
+            <thead class="thead">
+                <tr>
+                    <th>Идентификатор</th>
+                    <th>Общая сумма</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            @foreach (var order in @Model.ArchivePurchaseList)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.Total</td>
+                    <td>@order.Status</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/account/purchase/list.min.css" asp-append-version="true" />
+}
+
+<script src="~/js/DaData.js" asp-append-version="true"></script>

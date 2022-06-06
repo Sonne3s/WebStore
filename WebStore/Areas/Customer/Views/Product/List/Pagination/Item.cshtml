@@ -1,0 +1,9 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model PaginationItemViewModel
+@{
+    var value = Model.AlterValue != null ? Model.AlterValue : Model.IsFirst ? $"{Model.Id}.." : Model.IsLast ? $"..{Model.Id}" : Model.Id.ToString();
+}
+
+<li class="pagination-item @(Model.IsActive ? "active" : string.Empty)">
+    <button class="pagination-link" data-id=@Model.Id>@value</button>
+</li>

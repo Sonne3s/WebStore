@@ -1,0 +1,44 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Details
+@using WebStore.Extensions
+@using WebStore.HtmlHelpers
+@using Customer = WebStore.HtmlHelpers.Customer
+@model CartSectionViewModel
+@{
+    var addToCartAjaxAttributes = new Ajax.Unobtrusive 
+    { 
+        Success = "AddOrRemoveCartItemSuccess", 
+        Update = string.Join(
+            "", 
+            DataAttributes.InsertAttributeSelector(
+                DataAttributes.AttributeName.Purpose, 
+                Customer.DataPurposes.ItemCartSection),
+            DataAttributes.InsertAttributeSelector(
+                DataAttributes.AttributeName.Id, 
+                Model.ProductId.ToString()))
+    };
+    var addToCartUrl = Url.Action("DetailsAddToCart", "Buying", new { Area = "Customer", ProductId = Model.ProductId });
+    var removeFromCartUrl = Url.Action("DetailsRemoveFromCart", "Buying", new { Area = "Customer", ProductId = Model.ProductId });
+    var addToCartPurposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ProductAddToCartButton);
+    var removeFromCartPurposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ProductRemoveFromCartButton);
+    var productQuantityGoodsInCartPurposeAttribute = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ProductQuantityGoodsInCart);
+}
+
+<h5 class="product-cost">@(Model.Price.ToMoney())</h5>
+<h5 class="product-shopping-section"> 
+    <a href="@removeFromCartUrl" @Html.Raw(addToCartAjaxAttributes) @Html.Raw(addToCartPurposeAttribute) class="button">
+        <i class="icon-remove-from-cart"></i>
+    </a>
+    <span>x @Model.Count</span>
+    <a href="@addToCartUrl" @Html.Raw(addToCartAjaxAttributes) @Html.Raw(removeFromCartPurposeAttribute) class="button">
+        <i class="icon-add-to-cart"></i>
+    </a>
+</h5>
+<h5 class="product-total-amount">
+    @((Model.Price * Model.Count).ToMoney())
+    <button class="button">
+        <i class="icon-to-cart"></i>
+    </button>
+</h5>

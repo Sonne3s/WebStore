@@ -1,0 +1,14 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model ProductListFilterItemViewModel
+
+<div class="filter-item-body text">
+    @foreach (var item in Model.Values)
+    {
+        <div class="item">
+            <input type="checkbox" value="@item" name=@($"Properties[{Model.OrderId}].Values") id=@($"Properties[{Model.OrderId}].Values[{Model.Values.IndexOf(item)}]")>
+            <label for="@($"Properties[{Model.OrderId}].Values[{Model.Values.IndexOf(item)}]")">
+                @item
+            </label>
+        </div>
+    }
+</div>

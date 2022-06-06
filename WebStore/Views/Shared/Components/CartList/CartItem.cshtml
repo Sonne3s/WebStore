@@ -1,0 +1,15 @@
+﻿@using WebStore.HtmlHelpers
+@using static WebStore.ViewComponentModels.CartListViewComponentModel
+@using Customer = WebStore.HtmlHelpers.Customer
+@model CartListItemModel
+@{
+    (int, int, decimal) addRemovetoCartButtonsValues = (Model.Id, Model.Count, Model.Total);
+}
+
+<div class="item">
+    <h5 class="title">@(Model.Name)</h5>
+    <img class="img" src="\@(Model.ImageUrl)" />
+    <div class="add-remove-to-cart-buttons">
+        <vc:add-remove-to-cart-buttons value="addRemovetoCartButtonsValues" />
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.HtmlHelpers.Admin.Properties
+@model InputViewModel
+@{
+    var formId = Constants.Admin.Edit.FormId;
+    var attributes = Html.GetPropertyAttributes(Model.ComponentIndex, Model.PropertyIndex);
+    var inputNameAttribute = attributes.Value;
+    var containerNameAttribute = $"{ attributes.Prefix }.Container";
+    var inputGroupNameAttribute = attributes.GroupId;
+    var inputTypeNameAttribute = attributes.Type;
+    var inputUnitIdAttribute = attributes.UnitId;
+    var label = Model.Property.PropertyName;
+    var placeholder = "";
+    var disabled = Model.HasDisabled ? "Disabled" : string.Empty;
+
+    var addItemAjaxAttributes = new Ajax.Unobtrusive
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Get,
+        Mode = Ajax.Unobtrusive.ModeValue.After,
+        Update = $"[id='{containerNameAttribute}']",
+        Success = "ApplyInputEvents"
+    };
+    var addItemUrl = Url.Action(
+        "DecimalItem", 
+        "ProductProperty", 
+        new 
+        { 
+            Area = "Admin", 
+            UnitValue = Model.Property.UnitValue, 
+            NameAttribute = inputNameAttribute, 
+            Placeholder = placeholder, 
+            Disabled = string.Empty 
+        });
+
+    var containerButtonPurposeAttribute = 
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.InputContainer);
+    var removeButtonPurposeAttribute = 
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.RemoveInputButton);
+}
+
+<div class="form-group mb-1" @Html.Raw(containerButtonPurposeAttribute)>
+    <input type="hidden" value="@Model.Property.GroupId" form="@formId" name="@inputGroupNameAttribute"/>
+    <input type="hidden" value="@Model.Property.Type" form="@formId" name="@inputTypeNameAttribute"/>
+    <input type="hidden" value="@Model.Property.UnitId" form="@formId" name="@inputUnitIdAttribute"/>
+    <div class="card">
+        <div class="card-header">
+            @label
+            <button type="button" class="btn btn-sm btn-outline-danger" @Html.Raw(removeButtonPurposeAttribute)>
+                <i class="bi bi-x-lg"></i>
+                <span class="visually-hidden">Закрыть</span>
+            </button>
+            <a href="@addItemUrl" class="btn btn-sm btn-outline-info" @Html.Raw(addItemAjaxAttributes)>
+                <i class="bi bi-plus-lg"></i>
+            </a>
+        </div>
+        <div class="card-body" id="@containerNameAttribute">
+            @if (Model.Property.Values == null || Model.Property.Values.Count == 0)
+            {
+                <partial name="..\ProductProperty\Input\DecimalItem" model=@(string.Empty, Model.Property.UnitValue, inputNameAttribute, placeholder, disabled) />
+            }
+            else
+            {
+                @foreach (var value in Model.Property.Values)
+                {
+                    <partial name="..\ProductProperty\Input\DecimalItem" model=@(value.ToString(), Model.Property.UnitValue, inputNameAttribute, placeholder, disabled) />
+                }
+            }
+        </div>
+    </div>
+</div>

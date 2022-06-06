@@ -1,0 +1,57 @@
+﻿@import '../../lib/bootstrap/dist/scss/bootstrap.scss';
+/*@import 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css';
+*/@import '../_variables.scss';
+@import '../_fonts.scss';
+@import '../_icons.scss';
+@import '../_social_networks';
+@import '../components/_base.scss';
+@import '../components/_container.scss';
+@import '../components/_button.scss';
+@import '../components/_scrollbar.scss';
+@import '../components/_cart-off-canvas.scss';
+@import '../components/_logo.scss';
+
+html {
+    @include scrollbar(7px, 8px, 20px);
+}
+
+.logo-big {
+    @include logo-emblem-min();
+    display:inline-block;
+    font-size: 2.5rem;
+    text-align: end !important;
+    font-family: "Ruge Boogie",cursive;
+}
+
+.page-header {
+    @import '../components/_navbar.scss';
+    @import '../components/_userbar.scss';
+    @import '../components/_cartbar.scss';
+    @import '../components/_breadcrumbs.scss';
+    width: 100%;
+    position: fixed;
+    top: $header-margin-top;
+    z-index: 1024;
+    height: $header-height;
+
+    .left-side {
+        display: inline-block;
+        float: left;
+    }
+
+    .right-side {
+        display: inline-block;
+        float: right;
+        margin-right: 10vw;
+    }
+}
+
+.page-body {
+    @include container();
+    @include scrollbar(15px, 8px, 20px);
+    margin-top: $main-margin-top;
+    //height: $main-height;
+    //overflow-y: scroll;
+}
+
+@import '_footer.scss';

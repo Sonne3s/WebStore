@@ -1,0 +1,28 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.Models.Enumerations
+@model CreationPageViewModel
+@{
+    var hiddenUnitContainer = !Model.TypeId.HasValue || Model.TypeId == (int)PropertyTypeEnumeration.Text;
+    var disabled = Model.Id.HasValue ? "disabled" : string.Empty;
+    var creationPageUrl = Url.Action("UnitCreationPage", "ProductProperty");
+    var creationPageAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Get,
+        Mode = Ajax.Unobtrusive.ModeValue.Replace, 
+        Update = "#SubModal .modal-content", 
+    };
+    var modalDataProperties = string.Join(" ",
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Toggle, "modal"),
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Bootstrap.Target, "#SubModal"));
+    var editUnitPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.UnitCreationPageButton);
+}
+<label for="PropertyValueUnitTypeId">Единицы измерения</label>
+<div class="input-group">
+    <select asp-items="Model.Units" name="UnitId" class="form-select check-out" is-required=!hiddenUnitContainer is-disabled="Model.Id.HasValue"></select>
+    <a href="@creationPageUrl" class="btn btn-outline-info @disabled" @Html.Raw(creationPageAjaxAttributes) @Html.Raw(modalDataProperties)>
+        <i class="bi bi-plus-lg"></i>
+    </a>
+    <button type="submit" formaction="@creationPageUrl" formnovalidate class="btn btn-outline-info" @Html.Raw(creationPageAjaxAttributes) @Html.Raw(modalDataProperties) @Html.Raw(editUnitPurposeAttribute) @Html.Raw(disabled)>
+        <i class="bi bi-pencil-square"></i>
+    </button>
+</div>

@@ -1,0 +1,103 @@
+﻿@mixin keyframes-iridescent-gradient() {
+    @keyframes iridescent-gradient {
+        0% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 100%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+        }
+
+        4% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 90%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+        }
+
+        8% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 80%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+        }
+
+        12% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 70%, rgba(168,221,237,1) 100%, rgba(34,56,148,1) 100%);
+        }
+
+        16% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 60%, rgba(168,221,237,1) 80%, rgba(34,56,148,1) 100%);
+        }
+
+        20% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 50%, rgba(168,221,237,1) 70%, rgba(34,56,148,1) 90%);
+        }
+
+        24% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 40%, rgba(168,221,237,1) 60%, rgba(34,56,148,1) 80%);
+        }
+
+        28% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 30%, rgba(168,221,237,1) 50%, rgba(34,56,148,1) 70%);
+        }
+
+        32% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 20%, rgba(168,221,237,1) 40%, rgba(34,56,148,1) 60%);
+        }
+
+        36% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 10%, rgba(168,221,237,1) 30%, rgba(34,56,148,1) 50%);
+        }
+
+        40% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 20%, rgba(34,56,148,1) 40%);
+        }
+
+        44% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 30%);
+        }
+
+        48% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 0%);
+        }
+
+        100% {
+            background: linear-gradient(117deg, rgba(34,56,148,1) 0%, rgba(168,221,237,1) 0%, rgba(34,56,148,1) 0%);
+        }
+    }
+}
+
+@mixin keyframes-flicker($color) {
+    @keyframes flicker {
+        0% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 0px $color;
+        }
+
+        20% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 0px $color;
+        }
+
+        30% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 4px $color;
+        }
+
+        40% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 8px $color;
+        }
+
+        50% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 12px $color;
+        }
+
+        60% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 24px $color;
+        }
+
+        70% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 48px $color;
+        }
+
+        80% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 96px $color;
+        }
+
+        90% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 192px $color;
+        }
+
+        100% {
+            text-shadow: 3.5px 1.5px 1.3px rgb(161 221 239), 0px 0px 384px $color;
+        }
+    }
+}

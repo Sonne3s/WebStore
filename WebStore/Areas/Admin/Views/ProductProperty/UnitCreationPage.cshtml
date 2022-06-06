@@ -1,0 +1,36 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@model UnitCreationPageViewModel
+@{
+    var formUrl = Url.Action("UnitCreationPage", "ProductProperty", new { Area = "Admin" });
+    var deleteUrl = Url.Action("DeleteUnit", "ProductProperty", new { Area = "Admin" });
+    var formAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Post,
+        Update = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.UnitSelection),
+        Mode = Ajax.Unobtrusive.ModeValue.Replace,
+        Success = "ApplyUnitSelectionEvents"
+    };
+}
+
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">@(Model.Id.HasValue ? "Изменение единицы измерения" : "Создание единицы измерения")</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<!form action="@formUrl" @Html.Raw(formAjaxAttributes)>
+    <div class="modal-body">
+        <input type="hidden" id="Id" name="Id" value="@Model?.Id">
+        <input type="hidden" id="GroupId" name="Id" value="@Model?.GroupId">
+        <input type="hidden" id="TypeId" name="Id" value="@Model?.TypeId">
+        <div class="form-group mb-3">
+            <label for="PropertyGroupName">Наименование единицы измерения</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model?.Name" data-val="true" required>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" formaction="@deleteUrl" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-dismiss="modal" @(Model.Id.HasValue ? string.Empty : "disabled")>Удалить</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-dismiss="modal">Создать</button>
+        </div>
+    </div>
+</!form>

@@ -1,0 +1,6 @@
+﻿@model string
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <button class="badge rounded-pill btn btn-outline-info text-black" data-bs-toggle="popover" title="@Model">?</button>
+}

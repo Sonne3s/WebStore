@@ -1,0 +1,152 @@
+﻿@import '../../customer/_layout.scss';
+
+.cart {
+    @extend .row;
+
+    .cart-items-section {
+        @extend .col-8;
+        @include scrollbar(7px, 8px, 20px);
+        overflow-y: scroll;
+        height: 71.9vh;
+        direction: rtl;
+
+        .cart-items {
+            @extend .row;
+            @extend .row-cols-1;
+            @extend .g-4;
+            width: 99%;
+            direction: ltr;
+
+            .cart-item-container {
+                @extend .col;
+                @extend .card;
+                @extend .border-info;
+                flex: 0 0 auto;
+                width: 100%;
+
+                .cart-item {
+                    @extend .row;
+
+                    .title-container {
+                        @extend .col-4;
+                        @extend .card-body;
+
+                        ._title {
+                            @extend .card-title;
+                        }
+                    }
+
+                    .image-container {
+                        @extend .col-4;
+
+                        img {
+                            @extend .card-img-top;
+                            height: 18vh;
+                            object-fit: scale-down;
+                        }
+                    }
+
+                    .cart-buying-control-section {
+                        @extend .position-absolute;
+                        @extend .top-100;
+                        @extend .w-75;
+                        @extend .end-0;
+                        @extend .translate-middle-y;
+                        @extend .badge;
+                        z-index: 1;
+
+                        &a, &button {
+                            background-color: white;
+                        }
+
+                        .section-input-group {
+                            @extend .input-group;
+
+                            .remove-button {
+                                @extend .button;
+                                @extend .input-group-text;
+
+                                ._icon {
+                                    @extend .bi;
+                                    @extend .bi-cart-dash;
+                                    @extend .text-dark;
+                                }
+                            }
+
+                            .total-price {
+                                @extend .form-control;
+                                @extend .text-center;
+                            }
+
+                            .add-button {
+                                @extend .button;
+
+                                ._icon {
+                                    @extend .bi;
+                                    @extend .bi-cart-plus;
+                                    @extend .text-dark;
+                                }
+
+                                .cart-items-badge {
+                                    @extend .position-absolute;
+                                    @extend .top-0;
+                                    @extend .start-100;
+                                    @extend .translate-middle;
+                                    @extend .badge;
+                                    @extend .rounded-pill;
+                                    @extend .bg-danger;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .cart-buying-section {
+        @extend .col-4;
+
+        .check-out-button {
+            @extend .button;
+            @extend .secondary;
+            @extend .btn-lg;
+            width: 100%;
+        }
+
+        .equation-container {
+            margin: 1rem;
+            margin-bottom: 0;
+            z-index: 1024;
+            background-color: whitesmoke;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.25rem;
+
+            .equation-expression {
+                @include scrollbar(7px, 8px, 20px);
+                overflow-y: scroll;
+                max-height: 54vh;
+            }
+        }
+
+        .product-quantity-and-cost {
+            text-align: center;
+        }
+
+        .sum-symbol {
+            margin-top: -1.3rem;
+            margin-bottom: -0.9rem;
+        }
+
+        .product-total-amount {
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,.125);
+            margin-top: 1rem;
+        }
+
+        .product-total-count {
+            text-align: center;
+        }
+    }
+}

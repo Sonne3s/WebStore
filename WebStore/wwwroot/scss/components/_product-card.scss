@@ -1,0 +1,19 @@
+﻿.product-card {
+    @extend .card;
+    border-color: $color-border-product-card-footer;
+
+    .product-card-header {
+        @extend .card-header;
+        background-color: $color-background-product-card-header;
+    }
+
+    .product-card-body {
+        @extend .card-body;
+    }
+
+    .product-footer {
+        @extend .card-footer;
+        @extend .text-center;
+        background-color: $color-background-product-card-header;
+    }
+}

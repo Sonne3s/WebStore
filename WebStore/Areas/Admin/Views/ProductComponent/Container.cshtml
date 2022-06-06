@@ -1,0 +1,55 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductComponent
+@model ContainerViewModel
+@{
+    var newIndex = Model?.NewIndex ?? default(int);
+    var addProductPropertyContainerFormAjaxAttributes = new Ajax.Unobtrusive
+    {
+        Update = DataAttributes.InsertAttributeSelector(
+            DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsPropertiesContainer),
+        Success = "AddProductPropertyContainerSuccess",
+        Mode = Ajax.Unobtrusive.ModeValue.After
+    };
+    var addProductPropertyContainerFormUrl = Url.Action("Container", "ProductProperty", new { Area = "Admin" });
+    var addProductPropertyContainerButtonPurpose =
+        DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.AddPropertiesContainerButton);
+    var reloadFormAjaxAttributes = new Ajax.Unobtrusive
+    {
+        Update = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.ComponentsContainer),
+        Success = "ReloadComponentContainerSuccess",
+        Mode = Ajax.Unobtrusive.ModeValue.Replace
+    };
+    var reloadFormUrl = Url.Action("Container", "ProductComponent", new { Area = "Admin" });
+}
+
+ <div class="card border-info">
+     <div class="card-header">
+         Компоненты
+     </div>
+     <div class="card-body">
+         <div id="ComponentsContainer" role="tablist">
+             @if (Model?.Items != null)
+             {
+                 @foreach (var item in Model.Items)
+                 {
+                     <partial name="../ProductComponent/Item" model="item" />
+                 }
+             }
+         </div>
+     <!form action="@addProductPropertyContainerFormUrl" @Html.Raw(addProductPropertyContainerFormAjaxAttributes)>
+         <input type="hidden" name="NewIndex" value="@newIndex" />
+         @if(Model?.Items != null)
+         {
+             @foreach (var item in @Model.Items)
+            {
+                <input type="hidden" name="Items[@Model.Items.IndexOf(item)].Index" value="@item.Index">
+                <input type="hidden" name="Items[@Model.Items.IndexOf(item)].Name" value="@item.Name">
+            }
+         }
+         <input type="submit" class="d-none" formaction="@Html.Raw(reloadFormUrl)" @Html.Raw(reloadFormAjaxAttributes) @Html.Raw(addProductPropertyContainerButtonPurpose) />
+         <div class="input-group" id="add-component-button-container">
+             <input type="text" value="@Model?.NewName" class="form-control" placeholder="Компонент" name="NewName">
+             <button class="btn btn-outline-info bi bi-plus" type="submit"></button>
+         </div>
+     </!form>
+     </div>
+ </div>

@@ -1,0 +1,40 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        <div class="d-flex flex-row">
+            <a class="navbar-toggler text-white cool-life" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-tornado"></i>CL</a>
+        </div>
+        <div class="btn-group d-flex flex-row-reverse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                <span class="iconify" data-icon="bi:cart" data-width="32" data-height="32"></span>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".categories-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="iconify" data-icon="bi:card-checklist" data-width="32" data-height="32"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-white cool-life" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-tornado"></i>CL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Первая тестовая ссылка</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Вторая тестовая ссылкf</a>
+                </li>
+            </ul>
+            <form class="d-flex pe-3">
+                <input class="form-control me-2" type="search" placeholder="Найти товар" aria-label="Search">
+                <button class="btn btn-outline-info" type="submit"><i class="bi bi-search text-white"></i></button> 
+            </form>
+            <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample">
+                <i class="bi bi-cart text-white"></i>
+            </button> 
+        </div>
+    </div>
+</nav>

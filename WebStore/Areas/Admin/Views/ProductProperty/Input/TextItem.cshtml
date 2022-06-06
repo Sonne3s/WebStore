@@ -1,0 +1,14 @@
+﻿@model (string Value, string NameAttribute, string Placeholder, string Disabled)
+@{
+    var formId = Constants.Admin.Edit.FormId;
+    var containerButtonPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.InputItemContainer);
+    var removeButtonPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.RemoveInputItemButton);
+}
+
+<div class="input-group mb-2" @Html.Raw(containerButtonPurposeAttribute)>
+    <input type="text" form="@formId" class="form-control" name="@Model.NameAttribute" placeholder="@Model.Placeholder" value="@Model.Value" @Model.Disabled required>
+    <button type="button" class="btn btn-sm btn-outline-danger" @Html.Raw(removeButtonPurposeAttribute) @Model.Disabled>
+        <i class="bi bi-x-lg"></i>
+        <span class="visually-hidden">Удалить</span>
+    </button>
+</div>

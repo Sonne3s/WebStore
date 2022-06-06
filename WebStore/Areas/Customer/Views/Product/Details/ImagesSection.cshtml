@@ -1,0 +1,31 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model ImagesViewModel
+
+<div class="product-images-container">
+    <div id="productImages" class="carousel slide product-images-slider">
+        <div class="product-images">
+            @foreach (var img in Model.AllImages)
+            {
+                <div class="product-image-container carousel-item @(img.Id == 0 ? "active" : string.Empty)">
+                    <img src="\@img.Src" class="product-image" alt="..." style="height: 40vh;">
+                </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#productImages" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productImages" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+        </button>
+    </div>
+    <div class="product-images-collection">
+        @foreach (var img in Model.AllImages)
+        {
+            <div class="product-image-container">
+                <img src="\@img.Src" class="product-image @(img.Id == 0 ? "active" : string.Empty)" data-bs-target="#productImages" data-bs-slide-to="@img.Id" aria-current="true" aria-label="Slide @(img.Id+1)">
+            </div>
+        }
+    </div>
+</div>

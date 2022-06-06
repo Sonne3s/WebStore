@@ -1,0 +1,30 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductEdit
+@model ImagesTabViewModel
+
+<div class="mb-3">
+    <label for="formFileMultiple" class="form-label">Для загрузки изображений нажмите на кнопку "Загрузить файлы", либо перетяните нужные изображения на экран</label>
+    <input class="form-control" type="file" id="images" name="images" required multiple>
+    <div class="row gallery" @(Model?.Images != null ? $"data-last-id={Model.Images.Count}" : string.Empty)>
+        @if (Model != null)
+        {
+            @foreach (var img in Model.Images)
+            {
+                <div class="col-3 mt-3 image-container position-relative">
+                    <img src="@img.Base64" data-id="@img.Id" data-filename="@img.Name" class="upload-image card-img-top btn border-info">
+                    <button class="position-absolute top-0 end-0 translate-middle-y btn btn-danger rounded-pill" data-action="remove-img">
+                        <i class="bi bi-x-lg"></i>
+                        <span class="visually-hidden">Закрыть</span>
+                    </button>
+                </div>
+            }
+        }
+        <div class="col-3 mt-3 image-container position-relative sample d-none">
+            <img class="upload-image card-img-top btn border-info">
+            <button class="position-absolute top-0 end-0 translate-middle-y btn btn-danger rounded-pill" data-action="remove-img">
+                <i class="bi bi-x-lg"></i>
+                <span class="visually-hidden">Закрыть</span>
+            </button>
+        </div>
+    </div>
+</div>
+<button type="submit" class="btn btn-outline-success w-100 mt-2">Сохранить</button>

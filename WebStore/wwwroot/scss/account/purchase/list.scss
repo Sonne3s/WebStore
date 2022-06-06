@@ -1,0 +1,54 @@
+﻿@import '../../customer/_layout.scss';
+
+.purchase-tab-header {
+    @extend .nav;
+    @extend .nav-tabs;
+    margin-left: 15%;
+
+    .tab-item {
+        @extend .nav-item;
+        position: relative;
+        bottom: -1px;
+
+        .tab-button {
+            @extend .nav-link;
+
+            &.active {
+                border-color: var(--bs-info);
+                border-bottom-color: white;
+            }
+        }
+    }
+}
+
+.purchase-tab-body {
+    @extend .tab-content;
+    @extend .border-top;
+    @extend .rounded-bottom;
+    @extend .border-info;
+    @extend .row;
+
+    .tab-item {
+        @extend .tab-pane;
+        @extend .my-3;
+        @extend .fade;
+        @extend .col-8;
+        @extend .offset-2;
+
+        .purchase-table {
+            @extend .table;
+
+            .thead {
+                @extend .table-light;
+            }
+        }
+    }
+
+    .active-tab {
+        @extend .tab-item;
+    }
+
+    .archive-tab {
+        @extend .tab-item;
+    }
+}

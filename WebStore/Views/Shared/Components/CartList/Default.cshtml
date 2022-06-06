@@ -1,0 +1,9 @@
+﻿@using WebStore.ViewComponentModels
+@model CartListViewComponentModel
+
+<div class="cart-list">
+    @foreach (var item in Model.CartItems)
+    {
+        <partial name="/Views/Shared/Components/CartList/CartItem.cshtml", model=item />
+    }
+</div>

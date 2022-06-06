@@ -1,0 +1,45 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Extensions
+@using WebStore.HtmlHelpers
+@using WebStore.Models.Enumerations
+@using Customer = WebStore.HtmlHelpers.Customer
+@model ProductDetailsViewModel;
+@{
+    var productName = $"{ Model.Product.Type }: { Model.Product.Producer } { Model.Product.Name }";
+    var cartSectionPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.ItemCartSection);
+    var dataIdAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Id, Model.Product.Id.ToString());
+    var cartSectionAttributes = string.Join(" ", cartSectionPurpose, dataIdAttribute);
+    var breadcrumbs = new List<(string Name, string Href, bool IsActive)>
+    {
+        ValueTuple.Create("Каталог товаров", Url.Action("List", "Product", new { Area = "Customer" }), false),
+        ValueTuple.Create("Кондиционеры", Url.Action("List", "Product", new { Area = "Customer" }), false),
+        ValueTuple.Create(Model.Product.Producer, Url.Action("List", "Product", new { Area = "Customer" }), false),
+        ValueTuple.Create(Model.Product.Name, "#", true)
+    };
+}
+
+<h5 class="product-name">@productName</h5>
+<div class="product-shopping-block" @Html.Raw(cartSectionAttributes)>
+    <partial name="Details\CartSection" model=Model.CartSection />
+</div>
+<div class="product-description">
+    <p>@Model.Product.Description</p>
+</div>
+<div class="product-details-container">
+    <section class="product-images-section">
+        <partial name="Details\ImagesSection" model=Model.Product.Images />
+    </section>
+    <section class="product-properties-section">
+        <partial name="Details\PropertiesSection" model=Model.Product.PropertiesPages />
+    </section>
+</div>
+
+@section Breadcrumbs {
+    <vc:breadcrumbs breadcrumbs="@breadcrumbs"/>
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/customer/product/details.min.css" asp-append-version="true" />
+}
+<script src="~/js/Customer/Product/Buying.js" asp-append-version="true"></script>

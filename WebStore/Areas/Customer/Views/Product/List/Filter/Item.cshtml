@@ -1,0 +1,24 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Models.Enumerations
+@model ProductListFilterItemViewModel
+
+<div class="filter-item">
+    <input type="hidden" value="@Model.GroupId" name=@($"Properties[{Model.OrderId}].GroupId")>
+    <input type="hidden" value="@((int)Model.Type)" name=@($"Properties[{Model.OrderId}].TypeId")>
+    <label class="filter-item-header">@Model.Name</label>
+
+    @switch (Model.Type)
+    {
+        case PropertyTypeEnumeration.Text:
+            <partial name="List\Filter\ItemText" , model=@Model />
+            break;
+
+        case PropertyTypeEnumeration.Integer:
+            <partial name="List\Filter\ItemInteger" , model=@Model />
+            break;
+
+        case PropertyTypeEnumeration.Decimal:
+            <partial name="List\Filter\ItemDecimal" , model=@Model />
+            break;
+    }
+</div>

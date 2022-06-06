@@ -1,0 +1,53 @@
+﻿@using WebStore.Areas.Admin.ViewModels.ProductProperty
+@using WebStore.Models.Enumerations
+@model CreationPageViewModel
+@{
+    var hiddenUnitContainer = !Model.TypeId.HasValue || Model.TypeId == (int)PropertyTypeEnumeration.Text;
+    var disabled = Model.Id.HasValue ? "disabled" : string.Empty;
+    var linkDataIdAttribute = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Id, Model.ComponentIndex.ToString());
+    var typeSelectionPurpose = DataAttributes.InsertAttributeSelector(DataAttributes.AttributeName.Purpose, DataPurposes.TypeSelection);
+    var formAjaxAttributes = new Ajax.Unobtrusive()
+    {
+        Method = Ajax.Unobtrusive.MethodValue.Post,
+        Update = String.Join(" ", linkDataIdAttribute, typeSelectionPurpose),
+        Mode = Ajax.Unobtrusive.ModeValue.Replace
+    };
+    var formUrl = Url.Action("CreationPage", "ProductProperty", new { Area = "Admin" });
+    var deleteUrl = Url.Action("Delete", "ProductProperty", new { Area = "Admin" });
+    var unitPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.UnitSelection);
+    var formPurposeAttribute = DataAttributes.InsertAttribute(DataAttributes.AttributeName.Purpose, DataPurposes.CreationPageForm);
+}
+
+<!form action="@formUrl" @Html.Raw(formAjaxAttributes) @Html.Raw(formPurposeAttribute)>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">@(Model.Id.HasValue ? "Изменение свойства" : "Создание свойства")</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="Id" name="Id" value="@Model.Id">
+        <input type="hidden" id="ComponentIndex" name="ComponentIndex" value="@Model.ComponentIndex">
+        <input type="hidden" id="PropertyIndex" name="PropertyIndex" value="@Model.PropertyIndex">
+        <div class="form-group mb-3">
+            <label for="PropertyGroupName">Наименование свойства</label>
+            <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="PropertyGroupDescription">Описание свойства</label>
+            <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description">
+        </div>
+        <div class="form-group mb-3">
+            <label for="TypeId">Тип свойства</label>
+            <select asp-items="Model.Types" name="TypeId" class="form-select" is-disabled="Model.Id.HasValue" required></select>
+    </div>
+    <div class="form-group mb-2 @(hiddenUnitContainer ? "d-none" : string.Empty)" id="unit-container" @Html.Raw(unitPurposeAttribute)>
+        <partial name="UnitSelection" model="Model"/>
+    </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-danger" formaction="@deleteUrl" data-bs-dismiss="modal" @(Model.Id.HasValue ? string.Empty : "disabled")>Удалить</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Отмена</button>
+            <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Добавить</button>
+        </div>
+    </div>
+</!form>

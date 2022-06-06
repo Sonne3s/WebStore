@@ -1,0 +1,26 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@using WebStore.Models.Enumerations
+@model ProductListFilterViewModel
+                        
+<form asp-controller="Product" asp-action="Filter" asp-area="Customer" class="filters-form" id="filter" method="post" data-ajax="true" data-ajax-update="#products-container" data-ajax-success="ApplyProductContainerEvents">
+    <input type="hidden" id="CurrentPage" name="CurrentPage"/>
+    <div>
+        <div class="filters-form-buttons" role="group">
+            <button type="reset" class="button secondary">Очистить</button>
+            <button type="submit" class="button primary">Применить</button>            
+        </div>
+    </div>
+    <div class="filters">
+        <div class="base-filters">
+            <partial name="List\Filter\TypeItem", model=Model.Type />
+            <partial name="List\Filter\PriceItem", model=Model.Price />
+            <partial name="List\Filter\ProducerItem", model=Model.Producer /> 
+        </div>
+        <table>
+            @foreach(var item in @Model.Items)
+            {
+                <partial name="List\Filter\Item", model=item /> 
+            }
+        </table>
+    </div>
+</form>

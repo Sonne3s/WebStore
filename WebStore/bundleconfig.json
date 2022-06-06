@@ -1,0 +1,15 @@
+[
+  {
+    "outputFileName": "wwwroot/js/Customer/Product/list.js",
+    "inputFiles": [
+      "wwwroot/js/Customer/Product/list/*.js",
+      "wwwroot/js/Customer/Product/Buying.js",
+      "wwwroot/js/components/_cartbar.js",
+      "wwwroot/js/components/_userbar.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Customer/home/about.js",
+    "inputFiles": [ "wwwroot/js/Customer/home/about/*.js" ]
+  }
+]

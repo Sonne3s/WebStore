@@ -1,0 +1,25 @@
+﻿@using WebStore.Areas.Customer.ViewModels.Product
+@model List<PaginationItemViewModel>
+@{
+    var prevId = (Model.FirstOrDefault(p => p.IsActive)?.Id ?? 0) - 1;
+    var nextId = (Model.FirstOrDefault(p => p.IsActive)?.Id ?? 0) + 1;
+}
+
+<div class="pagination-section">
+    <nav class="pagination-container">
+        <ul class="pagination-list">
+            @if (prevId > 0)
+            {
+                <partial name="List\Pagination\Item" , model=@(new PaginationItemViewModel(prevId, false, false, false, "«")) />
+            }
+            @foreach (var item in Model)
+            {
+                <partial name="List\Pagination\Item" , model=item />
+            }
+            @if (nextId <= Model.Count)
+            {
+                <partial name="List\Pagination\Item" , model=@(new PaginationItemViewModel(nextId, false, false, false, "»")) />
+            }
+        </ul>
+    </nav>
+</div>

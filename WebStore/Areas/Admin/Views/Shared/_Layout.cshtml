@@ -1,0 +1,50 @@
+﻿@using Customer = WebStore.HtmlHelpers.Customer
+@{
+    var cartOffCanvasPurpose = DataAttributes.InsertAttribute(
+        DataAttributes.AttributeName.Purpose, Customer.DataPurposes.CartOffCanvas);
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - web_store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/web_store.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruge+Boogie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    <partial name="Scripts" />
+</head>
+<body>
+    <header class="page-header">
+        <vc:navbar />
+        <nav class="page-breadcrumb">
+            <ol class="page-breadcrumb-ol">
+                <li class="page-breadcrumb-item"><a href="#">Cool Life</a></li>
+                <li class="page-breadcrumb-item active" aria-current="page">Кондиционеры</li>
+            </ol>
+        </nav>
+    </header>
+    <div class="page-body">
+        <h1 class="logo-big"><i class="logo emblem-min"></i>Cool Life</h1>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <partial name="Footer" />
+    </footer>
+
+    <div @Html.Raw(cartOffCanvasPurpose) class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <vc:cart-off-canvas />
+    </div>
+
+    <partial name="Constants" />
+    @await RenderSectionAsync("Styles", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

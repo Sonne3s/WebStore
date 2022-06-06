@@ -1,0 +1,15 @@
+﻿@mixin container() {
+    width: 100vw;
+    padding-right: var(--bs-gutter-x,0.75rem);
+    padding-left: var(--bs-gutter-x,0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+
+    @media (min-width: 960px) {
+        width: 80vw;
+    }
+
+    @media (min-width: 1400px) {
+        width: 80vw;
+    }
+}

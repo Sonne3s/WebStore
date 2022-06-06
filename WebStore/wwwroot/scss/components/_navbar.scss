@@ -1,0 +1,92 @@
+﻿.page-navbar {
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-color: $color-first;
+    z-index: 1;
+
+    &::after {
+        content: " ";
+        display: block;
+        height: 40px;
+        width: 50px;
+        background-color: #b4f0fc;
+        margin: -40px -20px;
+        float: right;
+        transform: skew(316deg);
+    }
+
+    .navbar-container {
+        @extend .container-fluid;
+
+        .full-size-container {
+            .base-links {
+                flex-grow: 1 !important;
+                display: flex;
+                flex-direction: row;
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+
+                a {
+                    --bs-text-opacity: 1;
+                    color: rgba(var(--bs-white-rgb),var(--bs-text-opacity)) !important;
+                    display: block;
+                    padding: 0.5rem 0.5rem;
+                    text-decoration: none;
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+                }
+
+                .logo-link {
+                    a {
+                        font-family: 'Ruge Boogie', cursive;
+
+                        &:after {
+                            content: ' ';
+                            display: block;
+                            float: right;
+                            background: white;
+                            margin: -0.4em 10px;
+                            height: 2em;
+                            width: 1px;
+                        }
+
+                        .link-icon {
+                            @include logo-emblem-min();
+                        }
+                    }
+                }
+
+                .product-list-link {
+                }
+
+                .home-about-link {
+                    z-index: 1;
+                }
+            }
+        }
+
+        .small-size-logo-container {
+            @extend .d-flex;
+            @extend .flex-row;
+
+            .logo-link {
+                @extend .navbar-toggler;
+                @extend .text-white;
+                font-family: 'Ruge Boogie', cursive;
+
+                .logo-icon {
+                    @include logo-emblem-min();
+                }
+            }
+        }
+
+        .small-size-buttons-container {
+            @extend .btn-group;
+            @extend .d-flex;
+            @extend .flex-row-reverse;
+        }
+    }
+}
